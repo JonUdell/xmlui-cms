@@ -1,4 +1,7 @@
-<Theme themeId="xmlui-orange">
+<Theme 
+    themeId="xmlui-orange"
+    color-text-H1="blue"
+>
     <App>
         <Button
       variant="ghost"

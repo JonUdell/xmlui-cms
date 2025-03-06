@@ -1,27 +1,30 @@
 <Component name='Home'>
 
-    <H1 fontSize="$font-size-H1">Title 1</H1>
+    <H1 color="$color-text-H1">Normal Title uses theme-defined color override</H1>
 
-    <H1 color="$color-text-H1">Title 2</H1>
+    The next line is nicely separated.
+
+    Now begins Markdown.
 
     <Markdown>
 <![CDATA[                             
 
 
-# Introduction
+# Introduction, inside Markdown
 
-**XMLUI is a framework for building UIs declaratively with XML/XHTML markup, optional lightweight scripting, and flexible theming.**
+The next line, inside Markdown, inherits theme-defined color override but is not separated.
+
 
 ## Declarative Markup
 
-> normal blockquote
+> This normal blockquote, inside Markdown, inherits the theme color
 
 > [!INFO]
-> admonition
+> This custom blockquote does not inherit theme color.
 
 ```xml
 <App>
-  Hello, World from XMLUI!
+  This App does inherit the theme color.
 </App>
 ```
 ]]>
