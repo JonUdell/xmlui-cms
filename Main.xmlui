@@ -1,0 +1,19 @@
+<Theme themeId="xmlui-orange">
+    <App>
+        <Button
+      variant="ghost"
+      themeColor="secondary"
+      icon="{activeThemeTone === 'light' ? 'moon' : 'sun'}"
+      onClick="setThemeTone(activeThemeTone === 'light' ? 'dark' : 'light')"
+    />
+
+        <NavPanel>
+            <NavLink label="Home" to="/" />
+        </NavPanel>
+        <Pages>
+            <Page url="/">
+                <Home />
+            </Page>
+        </Pages>
+    </App>
+</Theme>

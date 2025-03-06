@@ -1,0 +1,31 @@
+<Component name='Home'>
+
+    <H1 fontSize="$font-size-H1">Title 1</H1>
+
+    <H1 color="$color-text-H1">Title 2</H1>
+
+    <Markdown>
+<![CDATA[                             
+
+
+# Introduction
+
+**XMLUI is a framework for building UIs declaratively with XML/XHTML markup, optional lightweight scripting, and flexible theming.**
+
+## Declarative Markup
+
+> normal blockquote
+
+> [!INFO]
+> admonition
+
+```xml
+<App>
+  Hello, World from XMLUI!
+</App>
+```
+]]>
+  </Markdown>
+
+
+</Component>

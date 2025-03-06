@@ -1,0 +1,10 @@
+{
+  "id": "my-theme",
+  "name": "my theme",
+  "themeVars": {
+    "font-size-H1": "16px",
+    "font-color-H1": "red"
+  },
+    "resources": {
+    }  
+}
