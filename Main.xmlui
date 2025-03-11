@@ -1,7 +1,9 @@
-<Theme 
+<Theme
     themeId="xmlui-orange"
-    color-text-H1="blue"
->
+    size-icon-Admonition="1.5rem"
+    color-bg-Admonition="lightblue"
+    radius-Blockquote="12px"
+    >
     <App>
         <Button
       variant="ghost"
@@ -11,11 +13,11 @@
     />
 
         <NavPanel>
-            <NavLink label="Home" to="/" />
+            <NavLink to="/" />
         </NavPanel>
         <Pages>
             <Page url="/">
-                <Home />
+              <Markdown url="/Home.md" />
             </Page>
         </Pages>
     </App>

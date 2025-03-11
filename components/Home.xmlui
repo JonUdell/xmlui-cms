@@ -1,34 +1,122 @@
-<Component name='Home'>
+<Component name="Home">
 
-    <H1 color="$color-text-H1">Normal Title uses theme-defined color override</H1>
+  <H1 color="$color-text-H1">Normal Title uses theme-defined color override</H1>
 
-    The next line is nicely separated.
+  The next line is nicely separated from the heading
 
-    Now begins Markdown.
+  <H2>Second level heading</H2>
 
-    <Markdown>
-<![CDATA[                             
+  <Text>This line is nicely separated from the heading, but too much from the next line</Text>
 
+  <Text>Now begins Markdown.</Text>
 
-# Introduction, inside Markdown
+  <Markdown>
+    <![CDATA[
+# Inside Markdown, should be no extra space above this first element!!!
 
 The next line, inside Markdown, inherits theme-defined color override but is not separated.
 
 
-## Declarative Markup
+## Declarative Markup not separated from previous
 
 > This normal blockquote, inside Markdown, inherits the theme color
 
 > [!INFO]
-> This custom blockquote does not inherit theme color.
+> With an XML-based approach, your UI’s structure and appearance are clearly defined in markup, making it easy to understand, modify, and maintain without digging through complex scripts.
+
 
 ```xml
 <App>
   This App does inherit the theme color.
 </App>
 ```
-]]>
-  </Markdown>
 
+## Another H2
+
+# H1
+
+Text under H1
+
+## H2
+
+Text under H2
+
+## H3
+
+Text under H3
+
+## H4
+
+Text under H4
+
+## H5
+
+Text under H5
+
+## H6
+
+Text under H6
+
+This line is well separated from above
+
+and from below
+
+| Product Name | Price | Stock | Category |
+|--------------|------:|------:|----------|
+| Widget A     | $19.99 | 42 | Electronics |
+| Gadget B     | $24.95 | 15 | Kitchen |
+| Doohickey C  | $12.50 | 108 | Tools |
+| Thing D      | $8.75  | 27 | Office |
+| Item E       | $49.99 | 3 | Electronics |
+
+Below the table
+
+- Unordered list item 1
+  - Nested unordered item
+    - Deeply nested item
+    - second one
+- Unordered list item 2
+
+1. Ordered list item 1
+   1. Nested ordered item
+      1. Deeply nested ordered item
+      2. second one
+2. Ordered list item 2
+
+separator
+
+1. First ordered item
+   - Unordered sub-item
+   - Another unordered sub-item
+2. Second ordered item
+
+
+- [x] Completed task
+- [ ] Incomplete task
+- [x] Another completed task
+
+> [!NOTE]
+> This is a note admonition
+
+> [!WARNING]
+> This is a warning admonition
+
+> [!DANGER]
+> This is a danger admonition
+
+> [!TIP]
+> This is a tip admonition
+
+
+Above the rule
+
+---
+
+Below the rule
+
+# Final element should have no extra space below
+
+    ]]>
+  </Markdown>
 
 </Component>
