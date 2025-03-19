@@ -1,14 +1,10 @@
 <Component name="Home">
 
-<TableOfContents/>
-
     <Markdown>
     <![CDATA[
 # Learn XMLUI
 
 XMLUI is a framework for building UIs declaratively with XML markup and flexible theming. Here's the markup for the simplest XMLUI app.
-
-## Hello World
 
 ```xml
 <App>
@@ -56,7 +52,7 @@ Let's try something more interesting. XMLUI components can retrieve and display 
 
     <Markdown>
     <![CDATA[
-## The List component
+## Listing data
 
 You could hover over the above <a href="https://xmlui-docs.azurewebsites.net/components/List" target="blank">List</a> to see the markup but it's very concise so we'll show it here.
 
@@ -90,7 +86,84 @@ The `List` component receives data by way of the `data` attribute which, in this
 
  We've seen `Text` as a standalone component. Here, nested within `List`, it renders once for each item in the list. The standard XMLUI variable `$item` holds each successive JSON object. It's a JavaScript variable, so you can use dot notation and array indexing to extract values.
 
+ ## Reactive data binding
+
+ Let's load that same data into a <a href="https://xmlui-docs.azurewebsites.net/components/Select" target="blank">Select</a> component.
+
     ]]>
     </Markdown>
+
+    <HStack>
+        <Markdown width="60%">
+    <![CDATA[
+ ```
+<Select id="lines" initialValue="Bakerloo" width="30%">
+    <Items data="https://api.tfl.gov.uk/line/mode/tube/status">
+        <Option value="{$item.name}" label="{$item.name}" />
+    </Items>
+</Select>
+```
+    ]]>
+        </Markdown>
+        <Stack verticalAlignment="center">
+            <Stack horizontalAlignment="center">
+                <Select id="lines" initialValue="Bakerloo">
+                    <Items data="https://api.tfl.gov.uk/line/mode/tube/status">
+                        <Option value="{$item.name}" label="{$item.name}" />
+                    </Items>
+                </Select>
+            </Stack>
+        </Stack>
+    </HStack>
+
+
+    <Markdown>
+    <![CDATA[
+
+Now we'll add a <a href="https://xmlui-docs.azurewebsites.net/components/Table" target="blank">Table</a> to display details about the selected tube line.
+    ]]>
+    </Markdown>
+
+    <HStack>
+
+        <Markdown width="60%">
+    <![CDATA[
+ ```
+<DataSource
+  id="stations"
+  url="https://api.tfl.gov.uk/Line/{lines.value}/Route/Sequence/inbound"
+  resultSelector="stations"/>
+
+<Text>Line: {lines.value}</Text>
+<Table data="{stations}">
+  <Column bindTo="name" />
+  <Column bindTo="modes" />
+</Table>
+```
+The <a href="https://xmlui-docs.azurewebsites.net/components/DataSource" target="blank">DataSource</a> component works like the `data` attribute we used with `Select`: it fetches from a REST endpoint. Unlike `Select` and `Table`, `DataSource` isn't a visible component, it works behind the scenes to capture data for use by visible components.
+
+We use `resultSelector` to target the `stations` key of the JSON object returned from the API. But notice the URL! It includes a reference to `lines`, the ID of the `Select`. In this context, `lines` is a JavaScript variable, and `lines.value` is the selected line. The initial value of the `Select` is `Bakerloo` so that's the line whose stations we see in the table.
+
+Now choose another line and watch the table react to the change. Because we also use `lines.value`, in a `Text`, as the title of the table, that changes too. That's XMLUI-style reactive data binding in a nutshell. You don't need to write code to make this happen, it's automatic!
+
+
+    ]]>
+        </Markdown>
+
+        <Stack width="40%">
+            <DataSource
+                id="stations"
+                url="https://api.tfl.gov.uk/Line/{lines.value}/Route/Sequence/inbound"
+                resultSelector="stations" />
+
+            <Text>Line: {lines.value}</Text>
+            <Table data="{stations}">
+                <Column bindTo="name" />
+                <Column bindTo="modes" />
+            </Table>
+        </Stack>
+
+    </HStack>
+
 
 </Component>

@@ -14,7 +14,29 @@
     </AppHeader>
 
     <NavPanel inspect="true">
-        <NavLink label="Intro" to="/" />
+        <NavLink label="Introduction" to="/" />
+        <NavGroup label="Demos">
+            <NavGroup label="Workflow">
+            </NavGroup>
+            <NavGroup label="Data Visualization">
+            </NavGroup>
+            <NavGroup label="Content Management">
+            </NavGroup>
+        </NavGroup>
+        <NavGroup label="Components">
+            <NavGroup label="Built-in">
+            </NavGroup>
+            <NavGroup label="User-defined">
+            </NavGroup>
+            <NavGroup label="Custom">
+            </NavGroup>
+        </NavGroup>
+        <NavGroup label="Themes">
+            <NavGroup label="Built-in">
+            </NavGroup>
+            <NavGroup label="User-defined">
+            </NavGroup>
+        </NavGroup>
         <NavLink label="Notes" to="/notes" />
     </NavPanel>
 
