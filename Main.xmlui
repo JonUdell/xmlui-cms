@@ -1,24 +1,44 @@
-<Theme
-    themeId="xmlui-orange"
-    size-icon-Admonition="1.5rem"
-    color-bg-Admonition="lightblue"
-    radius-Blockquote="12px"
-    >
-    <App>
-        <Button
-      variant="ghost"
-      themeColor="secondary"
-      icon="{activeThemeTone === 'light' ? 'moon' : 'sun'}"
-      onClick="setThemeTone(activeThemeTone === 'light' ? 'dark' : 'light')"
-    />
+<App
+    inspect="true"
+    layout="vertical-sticky"
+    logo="resources/xmlui-logo.svg"
+>
 
-        <NavPanel>
-            <NavLink to="/" />
-        </NavPanel>
+    <AppHeader inspect="true">
+        <Button inspect="true"
+            variant="ghost"
+            themeColor="secondary"
+            icon="{activeThemeTone === 'light' ? 'moon' : 'sun'}"
+            onClick="setThemeTone(activeThemeTone === 'light' ? 'dark' : 'light')"
+        />
+    </AppHeader>
+
+    <NavPanel inspect="true">
+        <NavLink label="Intro" to="/" />
+        <NavLink label="Notes" to="/notes" />
+    </NavPanel>
+
+    <Theme
+        backgroundColor-Blockquote="$backgroundColor"
+        borderRadius-Blockquote="0"
+        accent-Blockquote="gray"
+        backgroundColor-Admonition="#e8e8e8"
+        borderRadius-Admonition="$space-4"
+        iconSize-Admonition="2rem"
+        marginTop-Text="$space-4"
+        color-HtmlAnchor="#0000EE"
+        color-HtmlAnchor--active="#FF0000"
+        color-HtmlAnchor--visited="#551A8B"
+        color-HtmlAnchor--hover="#0000EE"
+    >
         <Pages>
             <Page url="/">
-              <Markdown url="/Home.md" />
+                <Home/>
+            </Page>
+            <Page url="/config">
+                <Markdown url="pages/notes.md" />
             </Page>
         </Pages>
-    </App>
-</Theme>
+    </Theme>
+
+</App>

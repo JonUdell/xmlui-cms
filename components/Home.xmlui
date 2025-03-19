@@ -1,122 +1,96 @@
 <Component name="Home">
 
-  <H1 color="$color-text-H1">Normal Title uses theme-defined color override</H1>
+<TableOfContents/>
 
-  The next line is nicely separated from the heading
-
-  <H2>Second level heading</H2>
-
-  <Text>This line is nicely separated from the heading, but too much from the next line</Text>
-
-  <Text>Now begins Markdown.</Text>
-
-  <Markdown>
+    <Markdown>
     <![CDATA[
-# Inside Markdown, should be no extra space above this first element!!!
+# Learn XMLUI
 
-The next line, inside Markdown, inherits theme-defined color override but is not separated.
+XMLUI is a framework for building UIs declaratively with XML markup and flexible theming. Here's the markup for the simplest XMLUI app.
 
-
-## Declarative Markup not separated from previous
-
-> This normal blockquote, inside Markdown, inherits the theme color
-
-> [!INFO]
-> With an XML-based approach, your UI’s structure and appearance are clearly defined in markup, making it easy to understand, modify, and maintain without digging through complex scripts.
-
+## Hello World
 
 ```xml
 <App>
-  This App does inherit the theme color.
+  <Text>Hello World!</Text>
 </App>
 ```
 
-## Another H2
-
-# H1
-
-Text under H1
-
-## H2
-
-Text under H2
-
-## H3
-
-Text under H3
-
-## H4
-
-Text under H4
-
-## H5
-
-Text under H5
-
-## H6
-
-Text under H6
-
-This line is well separated from above
-
-and from below
-
-| Product Name | Price | Stock | Category |
-|--------------|------:|------:|----------|
-| Widget A     | $19.99 | 42 | Electronics |
-| Gadget B     | $24.95 | 15 | Kitchen |
-| Doohickey C  | $12.50 | 108 | Tools |
-| Thing D      | $8.75  | 27 | Office |
-| Item E       | $49.99 | 3 | Electronics |
-
-Below the table
-
-- Unordered list item 1
-  - Nested unordered item
-    - Deeply nested item
-    - second one
-- Unordered list item 2
-
-1. Ordered list item 1
-   1. Nested ordered item
-      1. Deeply nested ordered item
-      2. second one
-2. Ordered list item 2
-
-separator
-
-1. First ordered item
-   - Unordered sub-item
-   - Another unordered sub-item
-2. Second ordered item
-
-
-- [x] Completed task
-- [ ] Incomplete task
-- [x] Another completed task
-
-> [!NOTE]
-> This is a note admonition
-
-> [!WARNING]
-> This is a warning admonition
-
-> [!DANGER]
-> This is a danger admonition
-
-> [!TIP]
-> This is a tip admonition
-
-
-Above the rule
-
----
-
-Below the rule
-
-# Final element should have no extra space below
+The <a href="https://xmlui-docs.azurewebsites.net/components/Text/" target="_blank">Text</a> component does what you'd expect. Here it is running live in this page:
 
     ]]>
-  </Markdown>
+    </Markdown>
+
+    <Text inspect="true">Hello World!</Text>
+
+    <Markdown>
+    <![CDATA[
+Hmm. The previous paragraph just looks like plain inline text. How can you tell it's a live XMLUI component?
+
+> [!INFO]
+> If you hover over an XMLUI component and a button appears,  you can click it to view the component's markup.
+
+Try that on the "Hello World!" paragraph above.
+
+<details>
+  <summary>Didn't find the button? Click for a hint. </summary>
+  <video autoplay loop muted>
+    <source src="resources/inspect-text.mp4"/>
+  </video>
+</details>
+    ]]>
+    </Markdown>
+
+    <Markdown>
+    <![CDATA[
+## Working with live data
+
+Let's try something more interesting. XMLUI components can retrieve and display live data. Here's the current status of London's tube lines:
+    ]]>
+    </Markdown>
+
+    <List inspect="true" data="https://api.tfl.gov.uk/line/mode/tube/status">
+        <Text>{$item.name}: {$item.lineStatuses[0].statusSeverityDescription}</Text>
+    </List>
+
+
+    <Markdown>
+    <![CDATA[
+## The List component
+
+You could hover over the above <a href="https://xmlui-docs.azurewebsites.net/components/List" target="blank">List</a> to see the markup but it's very concise so we'll show it here.
+
+```
+<List data="https://api.tfl.gov.uk/line/mode/tube/status">
+  <Text>{$item.name}: {$item.lineStatuses[0].statusSeverityDescription}</Text>
+</List>
+```
+
+
+The `List` component receives data by way of the `data` attribute which, in this case, just fetches JSON from a <a href="https://api.tfl.gov.uk/line/mode/tube/status" target="_blank">REST endpoint</a>. Other components, like <a href="https://xmlui-docs.azurewebsites.net/components/Table" target="blank">Table</a>, use the `data` attribute the same way.
+
+<details>
+<summary>See a sample of the data.</summary>
+<pre>
+[
+    {
+        "name": "Bakerloo",
+        "lineStatuses": [
+            {
+                "statusSeverityDescription": "Good Service"
+            }
+        ]
+    },
+    {
+    ... etc ...
+    },
+ ]
+</pre>
+</details>
+
+ We've seen `Text` as a standalone component. Here, nested within `List`, it renders once for each item in the list. The standard XMLUI variable `$item` holds each successive JSON object. It's a JavaScript variable, so you can use dot notation and array indexing to extract values.
+
+    ]]>
+    </Markdown>
 
 </Component>
