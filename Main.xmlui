@@ -2,6 +2,7 @@
     inspect="true"
     layout="vertical-sticky"
     logo="resources/xmlui-logo.svg"
+    <!-- defaultTheme="cms-theme" -->
 >
 
     <AppHeader inspect="true">
@@ -40,27 +41,13 @@
         <NavLink label="Notes" to="/notes" />
     </NavPanel>
 
-    <Theme
-        backgroundColor-Blockquote="$backgroundColor"
-        borderRadius-Blockquote="0"
-        accent-Blockquote="gray"
-        backgroundColor-Admonition="#e8e8e8"
-        borderRadius-Admonition="$space-4"
-        iconSize-Admonition="2rem"
-        marginTop-Text="$space-4"
-        color-HtmlAnchor="#0000EE"
-        color-HtmlAnchor--active="#FF0000"
-        color-HtmlAnchor--visited="#551A8B"
-        color-HtmlAnchor--hover="#0000EE"
-    >
-        <Pages>
-            <Page url="/">
-                <Home/>
-            </Page>
-            <Page url="/config">
-                <Markdown url="pages/notes.md" />
-            </Page>
-        </Pages>
-    </Theme>
-
+    <Pages>
+        <Page url="/">
+            <Home/>
+        </Page>
+        <Page url="/notes">
+            <DataSource id="notesContent" url="pages/notes.md" />
+            <Markdown content="{notesContent.value}" />
+        </Page>
+    </Pages>
 </App>
