@@ -73,3 +73,37 @@ You can find an example of using a raw markdown file in Main. xmlui. This page u
 ```
 
 I think there must be a more straightforward way to do it without needing a `DataSource.` I will conceive something.
+
+## AutoComplete with no value
+
+> **Note**: `AutoSelect` is working weirdly with Enter. I also reported the bug, and Tamas will soon start fixing it.
+
+I suggest the following resolution to remove activating the `DataSource` invocation when there is no line selected:
+
+```xml
+<!-- Omitted -->
+<AutoComplete id="lines" initialValue="Bakerloo">
+  <Items data="https://api.tfl.gov.uk/line/mode/tube/status">
+    <Option value="{$item.name}" label="{$item.name}" />
+  </Items>
+</AutoComplete>
+<!-- ... -->
+<Stack width="40%">
+  <Text>Line: {lines.value || '(not specified)'}</Text>
+  <Fragment when="{lines.value}">
+    <DataSource
+      id="stations"
+      url="https://api.tfl.gov.uk/Line/{lines.value}/Route/Sequence/inbound"
+      resultSelector="stations" />
+
+    <Table data="{stations}" height="600px">
+      <Column bindTo="name" />
+      <Column bindTo="modes" />
+    </Table>
+  </Fragment>
+</Stack>
+```
+
+The key is the `when` property; it hides the `Fragment` with no line selected. No endpoint is invoked as `DataSource` is within the hidden children.
+
+Observe that `Table` has a height of 600px.
