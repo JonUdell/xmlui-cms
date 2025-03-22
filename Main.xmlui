@@ -41,13 +41,20 @@
         <NavLink label="Notes" to="/notes" />
     </NavPanel>
 
+
     <Pages>
         <Page url="/">
             <Home/>
         </Page>
+        <!--
         <Page url="/notes">
             <DataSource id="notesContent" url="pages/notes.md" />
             <Markdown content="{notesContent.value}" />
         </Page>
+        -->
+        <Page url="/notes">
+            <Markdown url="pages/notes.md"/>
+        </Page>
     </Pages>
+
 </App>

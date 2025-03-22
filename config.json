@@ -1,6 +1,6 @@
 {
-  "defaultTheme": "cms-theme",
-  "themes": [
-    "themes/cms-theme.json"
-  ]
-}
+    "defaultTheme": "cms-theme",
+    "themes": [
+      "themes/cms-theme.json"
+   ]
+  }

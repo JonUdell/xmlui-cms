@@ -97,9 +97,9 @@ The `List` component receives data by way of the `data` attribute which, in this
         <Markdown width="60%">
     <![CDATA[
  ```
-<Select id="lines" initialValue="Bakerloo" width="30%">
+<Select id="lines" initialValue="bakerloo" width="30%">
     <Items data="https://api.tfl.gov.uk/line/mode/tube/status">
-        <Option value="{$item.name}" label="{$item.name}" />
+        <Option value="{$item.id}" label="{$item.name}" />
     </Items>
 </Select>
 ```
@@ -107,11 +107,11 @@ The `List` component receives data by way of the `data` attribute which, in this
         </Markdown>
         <Stack verticalAlignment="center">
             <Stack horizontalAlignment="center">
-                <AutoComplete id="lines" initialValue="Bakerloo">
+                <Select id="lines" initialValue="bakerloo">
                     <Items data="https://api.tfl.gov.uk/line/mode/tube/status">
-                        <Option value="{$item.name}" label="{$item.name}" />
+                        <Option value="{$item.id}" label="{$item.name}" />
                     </Items>
-                </AutoComplete>
+                </Select>
             </Stack>
         </Stack>
     </HStack>
