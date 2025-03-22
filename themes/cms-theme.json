@@ -8,6 +8,8 @@
       "accent-Blockquote": "gray",
       "backgroundColor-Admonition": "#e8e8e8",
       "borderRadius-Admonition": "$space-4",
+      "marginTop-Admonition": "$space-2",
+      "marginBottom-Admonition": "$space-2",
       "iconSize-Admonition": "2rem",
       "marginTop-Text": "$space-4",
       "marginBottom-Text": "$space-4",
