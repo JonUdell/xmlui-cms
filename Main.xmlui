@@ -39,6 +39,7 @@
             </NavGroup>
         </NavGroup>
         <NavLink label="Notes" to="/notes" />
+        <NavLink label="MarkdownTestbed" to="/markdown" />
     </NavPanel>
 
 
@@ -55,6 +56,10 @@
         <Page url="/notes">
             <Markdown url="pages/notes.md"/>
         </Page>
+        <Page url="/markdown">
+            <Markdown url="pages/markdown-testbed.md"/>
+        </Page>
+
     </Pages>
 
 </App>

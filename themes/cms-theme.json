@@ -1,21 +1,25 @@
 {
-    "name": "CMS Theme",
-    "id": "cms-theme",
-    "extends": ["xmlui-green"],
-    "themeVars": {
-      "backgroundColor-Blockquote": "$backgroundColor",
-      "borderRadius-Blockquote": "0",
-      "accent-Blockquote": "gray",
-      "backgroundColor-Admonition": "#e8e8e8",
-      "borderRadius-Admonition": "$space-4",
-      "marginTop-Admonition": "$space-2",
-      "marginBottom-Admonition": "$space-2",
-      "iconSize-Admonition": "2rem",
-      "marginTop-Text": "$space-4",
-      "marginBottom-Text": "$space-4",
-      "color-HtmlAnchor": "#0000EE",
-      "color-HtmlAnchor--active": "#FF0000",
-      "color-HtmlAnchor--visited": "#551A8B",
-      "color-HtmlAnchor--hover": "#0000EE"
-    }
+  "name": "CMS Theme",
+  "id": "cms-theme",
+  "extends": ["xmlui-green"],
+  "themeVars": {
+
+    "backgroundColor-Blockquote": "$color-surface-100",
+    "paddingLeft-Blockquote": "1rem",
+    "accent-Blockquote": "$color-primary-400",
+    "accentWidth-Blockquote": "$space-1",
+    "marginTop-Blockquote": "$space-4",
+    "marginBottom-Blockquote": "$space-4",
+
+    "backgroundColor-Admonition": "$color-surface-100",
+    "borderRadius-Admonition": "$space-3",
+    "marginTop-Admonition": "$space-4",
+    "marginBottom-Admonition": "$space-4",
+    "iconSize-Admonition": "2rem",
+
+    "marginTop-Text": "$space-4",
+    "marginBottom-Text": "$space-4",
+
+    "backgroundColor-Text-codefence": "$color-surface-100"
   }
+}

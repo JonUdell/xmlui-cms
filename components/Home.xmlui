@@ -26,6 +26,8 @@ Hmm. The previous paragraph just looks like plain inline text. How can you tell 
 > [!INFO]
 > If you hover over an XMLUI component and a button appears,  you can click it to view the component's markup.
 
+> Normal blockquote
+
 Try that on the "Hello World!" paragraph above.
 
 <details>
