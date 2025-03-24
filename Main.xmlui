@@ -40,6 +40,7 @@
         </NavGroup>
         <NavLink label="Notes" to="/notes" />
         <NavLink label="MarkdownTestbed" to="/markdown" />
+        <NavLink label="CombinedTestbed" to="/combined" />
     </NavPanel>
 
 
@@ -47,17 +48,14 @@
         <Page url="/">
             <Home/>
         </Page>
-        <!--
         <Page url="/notes">
-            <DataSource id="notesContent" url="pages/notes.md" />
-            <Markdown content="{notesContent.value}" />
-        </Page>
-        -->
-        <Page url="/notes">
-            <Markdown url="pages/notes.md"/>
+            <Markdown data="pages/notes.md"/>
         </Page>
         <Page url="/markdown">
-            <Markdown url="pages/markdown-testbed.md"/>
+            <Markdown data="pages/markdown-testbed.md"/>
+        </Page>
+        <Page url="/combined">
+            <Combined/>
         </Page>
 
     </Pages>

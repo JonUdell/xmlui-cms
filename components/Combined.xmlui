@@ -1,0 +1,157 @@
+<Component name="Combined">
+
+<H1>headings</H1>
+
+  <H2>xmlui H2</H2>
+
+<Markdown><![CDATA[
+## markdown h2
+]]></Markdown>
+
+<Markdown><![CDATA[
+These both use Heading. The span id suggests that this url should work:
+
+```
+/xmlui-cms/#markdown-h1
+```
+
+but seems not to.
+
+```
+<h1 class="_heading_yjkue_13 _h1_yjkue_13">
+<span id="markdown-h1" data-anchor="true" 
+    style="width: 0px; height: 0px;">
+</span>markdown h1</h1>
+```
+]]></Markdown>
+
+<H1>stacked headings xmlui</H1>
+
+<Text>Text above</Text>  
+  <H2>xmlui H2</H2>
+  <H3>xmlui H3</H3>
+  <H4>xmlui H4</H4>
+
+<H1>stacked headings markdown</H1>
+
+<Markdown><![CDATA[
+Text above
+
+## markdown h2
+### markdown h3
+#### markdown h4
+
+> [!NOTE]
+> Both flavors are using the xmlui Heading and have the same styles. Does this mean Markdown should have a global style to give the same separation?
+
+]]></Markdown>
+
+
+
+
+<H1>horizontal rule</H1>
+
+No XMLUI component. Markdown can do it like --- or &lt;hr/>
+
+   <Markdown><![CDATA[
+---
+]]></Markdown>
+
+    <Markdown><![CDATA[
+<hr/>
+]]></Markdown>
+
+
+    <H1>text</H1>
+
+    <Text>This is xmlui Text, it has style _text...</Text>
+
+    <Markdown>
+        <![CDATA[
+This is markdown text, it also has style _text... by way of:
+
+```
+p({ id, children }) {
+    return (
+        <Text uid={id}>
+        {children}
+        </Text>
+     );
+},
+```
+
+(Note that if there is leading whitespace it becomes pre / code.)
+
+
+]]>
+    </Markdown>
+
+    <H1>table</H1>
+
+    <Text>An xmlui table</Text>
+
+    <Table
+        data='{[
+  {
+    "id": 0,
+    "name": "Apples",
+    "quantity": 5,
+    "unit": "pieces",
+    "category": "fruits",
+    "key": 5
+  },
+  {
+    "id": 1,
+    "name": "Bananas",
+    "quantity": 6,
+    "unit": "pieces",
+    "category": "fruits",
+    "key": 4
+  },
+  {
+    "id": 2,
+    "name": "Carrots",
+    "quantity": 100,
+    "unit": "grams",
+    "category": "vegetables",
+    "key": 3
+  }
+
+]}'>
+        <Column bindTo="name" />
+        <Column bindTo="quantity" />
+        <Column bindTo="unit" />
+    </Table>
+
+
+    <Markdown>
+        <![CDATA[
+
+A markdown table
+
+| Name | Quantity | Unit |
+|----------|----------|----------|
+| Apples   | 5   | pieces  |
+| Bananas   |6   | pieces  |
+| Carrots   | 100   | grams   |    
+]]>
+    </Markdown>
+
+    <Markdown> <![CDATA[
+        
+The styles appear to match. However the XLMLUI table is using \_table_... instead of \_htmlTable_... 
+    
+MarkdownNative.tsx does this:
+
+    ```
+    table({ children }) {
+        return <table className={htmlTagStyles.htmlTable}>{children}</table>;
+        },
+    ```
+        
+Where do the \_table... styles come from? Where do the htmlTagStyles.htmlTable come from? How do (or should) these things relate?
+
+
+]]> </Markdown>
+
+</Component>
