@@ -3,15 +3,11 @@
   "id": "cms-theme",
   "extends": ["xmlui-green"],
   "themeVars": {
-
-    "backgroundColor-Blockquote": "$color-surface-100",
     "paddingLeft-Blockquote": "1rem",
-    "accent-Blockquote": "$color-primary-400",
     "accentWidth-Blockquote": "$space-1",
     "marginTop-Blockquote": "$space-4",
     "marginBottom-Blockquote": "$space-4",
 
-    "backgroundColor-Admonition": "$color-surface-100",
     "borderRadius-Admonition": "$space-3",
     "marginTop-Admonition": "$space-4",
     "marginBottom-Admonition": "$space-4",
@@ -20,6 +16,18 @@
     "marginTop-Text": "$space-4",
     "marginBottom-Text": "$space-4",
 
-    "backgroundColor-Text-codefence": "$color-surface-100"
+    "backgroundColor-Text-codefence": "$color-surface-100",
+    "light": {
+      "backgroundColor-Blockquote": "$color-surface-100",
+      "accent-Blockquote": "$color-primary-400",
+
+      "backgroundColor-Admonition": "$color-surface-100"
+    },
+    "dark": {
+      "backgroundColor-Blockquote": "$color-surface-900",
+      "accent-Blockquote": "$color-primary-600",
+
+      "backgroundColor-Admonition": "$color-surface-900"
+    }
   }
 }
