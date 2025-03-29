@@ -3,25 +3,28 @@
     layout="vertical-sticky"
     logo="resources/xmlui-logo.svg"
     defaultTheme="basic"
-    defaultTone="dark"
+    defaultTone="light"
 >
 
     <AppHeader inspect="true">
 
-        <Button
+<!--
+       <Button
             variant="ghost"
             themeColor="secondary"
             icon="palette"
         />
+-->
 
         <Select
             id="pickTheme"
-            width="20%"
-            initialValue="xmlui"
+            width="30%"
+d            initialValue="basic"
             onDidChange="(newTheme) => setTheme(newTheme)"
         >
-            <Option value="xmlui" label="xmlui (base)" />
-            <Option value="xmlui-cyan" label="xmlui-cyan" />
+            <Option value="basic" label="basic (markdown-aware)" />
+            <Option value="xmlui" label="xmlui (markdown-unaware)" />
+            <Option value="xmlui-cyan" label="xmlui-cyan ('')" />
             <Option value="xmlui-gray" label="xmlui-gray" />
             <Option value="xmlui-green" label="xmlui-green" />
             <Option value="xmlui-purple" label="xmlui-purple" />
@@ -107,7 +110,11 @@
 -->
 
 
-    <Footer> Powered by XMLUI <Button
+    <Footer>
+        <Text>
+        Powered by XMLUI
+        </Text>
+        <Button
             variant="ghost"
             icon="{activeThemeTone === 'light' ? 'moon' : 'sun'}"
             onClick="setThemeTone(activeThemeTone === 'dark' ? 'light' : 'dark')"

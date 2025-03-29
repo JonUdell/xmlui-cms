@@ -41,27 +41,57 @@
     "color-secondary-900": "hsl(30, 50%, 25%)",
     "color-secondary-950": "hsl(30, 50%, 20%)",
 
+    "borderRadius-Admonition": "$space-4",
+    "marginTop-Admonition": "1rem",
+    "marginTop-Blockquote": "1rem",
+    "padding-Admonition": "1rem",
+    "padding-Blockquote": ".5rem",
+    "marginBottom-Admonition": "1rem",
+    "marginBotton-Blockquote": "1rem",
+    "iconSize-Admonition": "1.5rem",
 
     "light": {
-      "backgroundColor": "$color-surface-50",
+      "backgroundColor": "$transparent",
       "backgroundColor-AppHeader": "$color-surface-100",
       "backgroundColor-NavPanel": "$color-surface-100",
-      "backgroundColor-Blockquote": "$color-surface-100",
-      "textColor-primary": "$color-primary-900",
-      "textColor-H1": "$color-primary-500",
-      "textColor-NavLink": "$color-primary-800",
-      "textColor-Footer": "$color-primary-800"
+      "backgroundColor-Blockquote": "$color-secondary-50",
+      "backgroundColor-Admonition": "$color-secondary-200",
+      "backgroundColor-Text-codefence": "black",
+
+      "accent-Blockquote": "$color-secondary-900",
+      "accentWidth-Blockquote": "3px",
+
+      "textColor-primary": "$color-primary",
+      "textColor-H1": "$color-primary-900",
+      "textColor-NavLink": "$color-primary-900",
+      "textColor-Footer": "$color-primary-900",
+
+      "textColor-Text-markdown": "black",
+      "textColor-Text-codefence": "white"
+
+
     },
     "dark": {
-      "backgroundColor": "$color-surface-100",
-      "backgroundColor-AppHeader": "$color-surface-700",
-      "backgroundColor-NavPanel": "$color-surface-800",
-      "backgroundColor-Blockquote": "$color-surface-8100",
-      "textColor-primary": "$color-primary-500",
-      "textColor-H1": "$color-surface-50",
+      "backgroundColor": "black",
+      "backgroundColor-AppHeader": "black",
+      "backgroundColor-NavPanel": "black",
+      "backgroundColor-Blockquote": "black",
+      "backgroundColor-Admonition": "black",
+
+      "backgroundColor-Text-markdown": "black",
+      "backgroundColor-Text-codefence": "black",
+
+      "accent-Blockquote": "gray",
+      "accentWidth-Blockquote": "3px",
+
+      "textColor-primary": "$color-surface-50",
+      "textColor-H1": "white",
       "textColor-NavLink": "$color-surface-50",
-      "textColor-Footer": "$color-surface-50"
-    }
+      "textColor-Footer": "$color-surface-50",
+
+      "textColor-Text-markdown": "$color-surface-50",
+      "textColor-Text-codefence": "$color-primary-500"
+}
 
   }
 }
