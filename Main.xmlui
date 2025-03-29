@@ -2,8 +2,8 @@
     inspect="true"
     layout="vertical-sticky"
     logo="resources/xmlui-logo.svg"
-    defaultTheme="basic"
     defaultTone="light"
+    defaultTheme="basic"
 >
 
     <AppHeader inspect="true">
@@ -19,7 +19,7 @@
         <Select
             id="pickTheme"
             width="30%"
-d            initialValue="basic"
+            initialValue="basic"
             onDidChange="(newTheme) => setTheme(newTheme)"
         >
             <Option value="basic" label="basic (markdown-aware)" />

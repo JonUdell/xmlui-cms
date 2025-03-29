@@ -1,7 +1,5 @@
 {
    "themes": [
-      "themes/basic.json",
-      "themes/invoice.json"
-
+      "themes/basic.json"
   ]
  }
