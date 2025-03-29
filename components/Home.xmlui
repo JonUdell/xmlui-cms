@@ -51,6 +51,7 @@ Let's try something more interesting. XMLUI components can retrieve and display 
         <Text>{$item.name}: {$item.lineStatuses[0].statusSeverityDescription}</Text>
     </List>
 
+    <Bookmark id="listing-data" />
 
     <Markdown>
     <![CDATA[
@@ -107,6 +108,9 @@ The `List` component receives data by way of the `data` attribute which, in this
 ```
     ]]>
         </Markdown>
+
+        <ContentSeparator orientation="vertical" size="4px" />
+
         <Stack verticalAlignment="center">
             <Stack horizontalAlignment="center">
                 <Select id="lines" initialValue="bakerloo">
@@ -151,6 +155,9 @@ Now choose another line and watch the table react to the change. Because we also
 
     ]]>
         </Markdown>
+
+        <ContentSeparator orientation="vertical" size="4px" />
+
 
         <Stack width="40%">
             <Text>Line: {lines.value || '(not specified)'}</Text>

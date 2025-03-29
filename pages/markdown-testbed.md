@@ -153,8 +153,8 @@ And this continues on a new line.
 
 ## HTML in Markdown
 
-<div style="color: blue;">
-  This is HTML inside Markdown.
+<div style="color: darkblue; font-family:serif; font-weight:bold">
+  This is HTML inside Markdown, with local styles
 </div>
 
 <table>

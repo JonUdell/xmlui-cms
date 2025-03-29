@@ -2,19 +2,37 @@
     inspect="true"
     layout="vertical-sticky"
     logo="resources/xmlui-logo.svg"
-    <!-- defaultTheme="cms-theme" -->
+    defaultTheme="basic"
+    defaultTone="dark"
 >
 
     <AppHeader inspect="true">
-        <Button inspect="true"
+
+        <Button
             variant="ghost"
             themeColor="secondary"
-            icon="{activeThemeTone === 'light' ? 'moon' : 'sun'}"
-            onClick="setThemeTone(activeThemeTone === 'light' ? 'dark' : 'light')"
+            icon="palette"
         />
+
+        <Select
+            id="pickTheme"
+            width="20%"
+            initialValue="xmlui"
+            onDidChange="(newTheme) => setTheme(newTheme)"
+        >
+            <Option value="xmlui" label="xmlui (base)" />
+            <Option value="xmlui-cyan" label="xmlui-cyan" />
+            <Option value="xmlui-gray" label="xmlui-gray" />
+            <Option value="xmlui-green" label="xmlui-green" />
+            <Option value="xmlui-purple" label="xmlui-purple" />
+            <Option value="xmlui-orange" label="xmlui-orange" />
+        </Select>
+
+
     </AppHeader>
 
-    <NavPanel inspect="true">
+    <NavPanel
+        inspect="true">
         <NavLink label="Introduction" to="/" />
         <NavGroup label="Demos">
             <NavGroup label="Workflow">
@@ -43,21 +61,57 @@
         <NavLink label="CombinedTestbed" to="/combined" />
     </NavPanel>
 
+    <!--
+    <Theme
+        backgroundColor-Blockquote="$color-surface-100"
+        paddingLeft-Blockquote="1rem"
+        accent-Blockquote="$color-primary-400"
+        accentWidth-Blockquote="$space-1"
+        marginTop-Blockquote="$space-4"
+        marginBottom-Blockquote="$space-4"
+        backgroundColor-Admonition="$color-surface-100"
+        borderRadius-Admonition="$space-3"
+        marginTop-Admonition="$space-4"
+        marginBottom-Admonition="$space-4"
+        iconSize-Admonition="2rem"
+        marginTop-H1="$space-4"
+        marginBottom-H1="$space-4"
+        marginTop-H2="$space-3"
+        marginBottom-H2="$space-3"
+        backgroundColor-Text-codefence="$color-surface-100"
+        marginTop-Text-codefence=".5rem"
+        marginBottom-Text-codefence=".5rem"
+        fontSize-Text-codefence=".8rem"
+    />
+    -->
 
-    <Pages>
-        <Page url="/">
-            <Home/>
-        </Page>
-        <Page url="/notes">
-            <Markdown data="pages/notes.md"/>
-        </Page>
-        <Page url="/markdown">
-            <Markdown data="pages/markdown-testbed.md"/>
-        </Page>
-        <Page url="/combined">
-            <Combined/>
-        </Page>
+        <Pages>
+            <Page url="/">
+                <Home />
+            </Page>
+            <Page url="/notes">
+                <Markdown data="pages/notes.md" />
+            </Page>
+            <Page url="/markdown">
+                <Markdown data="pages/markdown-testbed.md" />
+            </Page>
+            <Page url="/combined">
+                <Combined />
+            </Page>
 
-    </Pages>
+        </Pages>
+
+<!--
+    </Theme>
+
+-->
+
+
+    <Footer> Powered by XMLUI <Button
+            variant="ghost"
+            icon="{activeThemeTone === 'light' ? 'moon' : 'sun'}"
+            onClick="setThemeTone(activeThemeTone === 'dark' ? 'light' : 'dark')"
+        />
+    </Footer>
 
 </App>

@@ -1,6 +1,7 @@
 {
-    "defaultTheme": "cms-theme",
-    "themes": [
-      "themes/cms-theme.json"
-   ]
-  }
+   "themes": [
+      "themes/basic.json",
+      "themes/invoice.json"
+
+  ]
+ }
