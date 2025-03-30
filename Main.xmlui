@@ -23,6 +23,7 @@
             onDidChange="(newTheme) => setTheme(newTheme)"
         >
             <Option value="earthtone" label="earthtone (markdown-aware)" />
+            <Option value="github" label="github (markdown-aware)" />
             <Option value="xmlui" label="xmlui (markdown-unaware)" />
             <Option value="xmlui-cyan" label="xmlui-cyan" />
             <Option value="xmlui-gray" label="xmlui-gray" />

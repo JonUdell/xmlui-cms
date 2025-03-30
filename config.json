@@ -1,5 +1,6 @@
 {
    "themes": [
-      "themes/earthtone.json"
+      "themes/earthtone.json",
+      "themes/github.json"
   ]
  }
