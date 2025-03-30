@@ -1,6 +1,6 @@
 {
-  "name": "Basic",
-  "id": "basic",
+  "name": "Earthtone",
+  "id": "earthtone",
   "themeVars": {
     "--- App-bound root theme variables": "",
     "space-base": "0.25rem",
@@ -59,13 +59,14 @@
       "backgroundColor-Admonition": "$color-secondary-200",
       "backgroundColor-Text-codefence": "black",
 
-      "accent-Blockquote": "$color-secondary-900",
+      "accent-Blockquote": "$color-secondary-950",
       "accentWidth-Blockquote": "3px",
 
-      "textColor-primary": "$color-primary",
-      "textColor-H1": "$color-primary-900",
-      "textColor-NavLink": "$color-primary-900",
-      "textColor-Footer": "$color-primary-900",
+      "textColor-primary": "$color-primary-950",
+      "textColor-H1": "$color-primary-950",
+      "textColor-Link": "$color-secondary-700",
+      "textColor-NavLink": "$color-primary-950",
+      "textColor-Footer": "$color-primary-950",
 
       "textColor-Text-markdown": "black",
       "textColor-Text-codefence": "white"
@@ -83,7 +84,7 @@
       "accent-Blockquote": "gray",
       "accentWidth-Blockquote": "3px",
 
-      "textColor-primary": "$color-surface-50",
+      "textColor-primary": "$color-primary-500",
       "textColor-H1": "white",
       "textColor-NavLink": "$color-surface-50",
       "textColor-Footer": "$color-surface-50",

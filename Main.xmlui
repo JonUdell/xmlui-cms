@@ -3,7 +3,7 @@
     layout="vertical-sticky"
     logo="resources/xmlui-logo.svg"
     defaultTone="light"
-    defaultTheme="basic"
+    defaultTheme="earthtone"
 >
 
     <AppHeader inspect="true">
@@ -19,12 +19,12 @@
         <Select
             id="pickTheme"
             width="30%"
-            initialValue="basic"
+            initialValue="earthtone"
             onDidChange="(newTheme) => setTheme(newTheme)"
         >
-            <Option value="basic" label="basic (markdown-aware)" />
+            <Option value="earthtone" label="earthtone (markdown-aware)" />
             <Option value="xmlui" label="xmlui (markdown-unaware)" />
-            <Option value="xmlui-cyan" label="xmlui-cyan ('')" />
+            <Option value="xmlui-cyan" label="xmlui-cyan" />
             <Option value="xmlui-gray" label="xmlui-gray" />
             <Option value="xmlui-green" label="xmlui-green" />
             <Option value="xmlui-purple" label="xmlui-purple" />
@@ -62,6 +62,8 @@
         <NavLink label="Notes" to="/notes" />
         <NavLink label="MarkdownTestbed" to="/markdown" />
         <NavLink label="CombinedTestbed" to="/combined" />
+        <NavLink label="Palettes" to="/palettes" />
+        <NavLink label="Components" to="/components" />
     </NavPanel>
 
     <!--
@@ -100,6 +102,12 @@
             </Page>
             <Page url="/combined">
                 <Combined />
+            </Page>
+            <Page url="/palettes">
+                <Palettes />
+            </Page>
+            <Page url="/components">
+                <Components />
             </Page>
 
         </Pages>
