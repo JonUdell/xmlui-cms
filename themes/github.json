@@ -50,28 +50,10 @@
     "marginBottom-Admonition": "1rem",
     "marginBotton-Blockquote": "1rem",
     "iconSize-Admonition": "1.5rem",
+    "accentWidth-Blockquote": "3px",
+    "accent-Blockquote": "$color-surface-500",
 
     "light": {
-      "backgroundColor": "$transparent",
-      "backgroundColor-AppHeader": "$color-surface-100",
-      "backgroundColor-NavPanel": "$color-surface-100",
-      "backgroundColor-Admonition": "$color-secondary-50",
-      "backgroundColor-Blockquote": "$color-secondary-50",
-
-      "backgroundColor-Text-markdown": "$transparent",
-      "backgroundColor-Text-codefence": "$color-secondary-50",
-
-      "textColor-Text-markdown": "$color-primary-950",
-      "textColor-Text-codefence": "$color-primary-950",
-
-      "accent-Blockquote": "$color-secondary-200",
-      "accentWidth-Blockquote": "3px",
-
-      "textColor-primary": "$color-primary-650",
-      "textColor-H1": "$color-primary-950",
-      "textColor-Link": "$color-secondary-800",
-      "textColor-NavLink": "$color-primary-950",
-      "textColor-Footer": "$color-primary-950"
     },
     "dark": {
       "backgroundColor": "black",
@@ -86,10 +68,7 @@
       "textColor-Text-markdown": "$color-primary-200",
       "textColor-Text-codefence": "$color-primary-200",
 
-      "accent-Blockquote": "$color-secondary-800",
-      "accentWidth-Blockquote": "3px",
-
-      "textColor-H1": "white",
+      "textColor-primary": "$color-surface-400",
       "textColor-NavLink": "$color-surface-50",
       "textColor-Footer": "$color-surface-50"
     }
