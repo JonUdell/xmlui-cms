@@ -17,6 +17,7 @@
         >
             <Option value="earthtone" label="earthtone" />
             <Option value="github" label="github" />
+            <Option value="custom-gray" label="custom-gray" />
             <Option value="xmlui" label="xmlui " />
             <Option value="xmlui-cyan" label="xmlui-cyan " />
             <Option value="xmlui-gray" label="xmlui-gray " />

@@ -7,10 +7,12 @@
 
     "color-primary": "hsl(212, 60%, 30%)",
     "color-secondary": "hsl(210, 12%, 35%)",
+    "color-warn": "hsl(196,71.9%,45.4%)",
 
     "light": {
     },
     "dark": {
+      "textColor-Link": "$color-warn-500"
     }
   }
 }
