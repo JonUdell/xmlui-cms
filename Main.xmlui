@@ -2,19 +2,12 @@
     inspect="true"
     layout="vertical-sticky"
     logo="resources/xmlui-logo.svg"
+    logo-dark="resources/logo-dark.svg"
     defaultTone="light"
     defaultTheme="earthtone"
 >
 
     <AppHeader inspect="true">
-
-        <!--
-       <Button
-            variant="ghost"
-            themeColor="secondary"
-            icon="palette"
-        />
--->
 
         <Select
             id="pickTheme"
@@ -22,50 +15,44 @@
             initialValue="earthtone"
             onDidChange="(newTheme) => setTheme(newTheme)"
         >
-            <Option value="earthtone" label="earthtone (markdown-aware)" />
-            <Option value="github" label="github (markdown-aware)" />
-            <Option value="twilight-oasis" label="twilight-oasis (markdown-aware)" />
-            <Option value="xmlui" label="xmlui (markdown-unaware)" />
-            <Option value="xmlui-cyan" label="xmlui-cyan (markdown-unaware)" />
-            <Option value="xmlui-gray" label="xmlui-gray (markdown-unaware)" />
-            <Option value="xmlui-green" label="xmlui-green (markdown-unaware)" />
-            <Option value="xmlui-purple" label="xmlui-purple (markdown-unaware)" />
-            <Option value="xmlui-orange" label="xmlui-orange (markdown-unaware)" />
+            <Option value="earthtone" label="earthtone" />
+            <Option value="github" label="github" />
+            <Option value="xmlui" label="xmlui " />
+            <Option value="xmlui-cyan" label="xmlui-cyan " />
+            <Option value="xmlui-gray" label="xmlui-gray " />
+            <Option value="xmlui-green" label="xmlui-green " />
+            <Option value="xmlui-purple" label="xmlui-purple " />
+            <Option value="xmlui-orange" label="xmlui-orange " />
         </Select>
-
 
     </AppHeader>
 
     <NavPanel
         inspect="true">
+
         <NavLink label="Introduction" to="/" />
+
         <NavGroup label="Demos">
-            <NavGroup label="Workflow">
+            <NavGroup label="Workflow" to="/workflow">
             </NavGroup>
-            <NavGroup label="Data Visualization">
+            <NavGroup label="Data Visualization" to="/dataVisualization">
             </NavGroup>
-            <NavGroup label="Content Management">
-            </NavGroup>
-        </NavGroup>
-        <NavGroup label="Components">
-            <NavGroup label="Built-in">
-            </NavGroup>
-            <NavGroup label="User-defined">
-            </NavGroup>
-            <NavGroup label="Custom">
+            <NavGroup label="Invoices" to="/invoices">
             </NavGroup>
         </NavGroup>
-        <NavGroup label="Themes">
-            <NavGroup label="Built-in">
-            </NavGroup>
-            <NavGroup label="User-defined">
-            </NavGroup>
-        </NavGroup>
-        <NavLink label="Notes" to="/notes" />
-        <NavLink label="MarkdownTestbed" to="/markdown" />
-        <NavLink label="CombinedTestbed" to="/combined" />
-        <NavLink label="Palettes" to="/palettes" />
+
         <NavLink label="Components" to="/components" />
+
+        <NavLink label="Layouts" to="/layouts" />
+
+        <NavLink label="Palettes" to="/palettes" />
+
+        <NavLink label="MarkdownTestbed" to="/markdown" />
+
+        <NavLink label="CombinedTestbed" to="/combined" />
+
+        <NavLink label="Notes" to="/notes" />
+
     </NavPanel>
 
 
@@ -73,21 +60,45 @@
         <Page url="/">
             <Home />
         </Page>
-        <Page url="/notes">
-            <Markdown data="pages/notes.md" />
+
+<!--
+        <Page url="/workflow">
+            <Workflow/>
         </Page>
-        <Page url="/markdown">
-            <Markdown data="pages/markdown-testbed.md" />
+
+        <Page url="/dataVisualization">
+            <DataVisualization />
         </Page>
-        <Page url="/combined">
-            <Combined />
+
+        <Page url="/invoices">
+            <Invoices />
         </Page>
-        <Page url="/palettes">
-            <Palettes />
-        </Page>
+-->
+
         <Page url="/components">
             <Components />
         </Page>
+
+        <Page url="/layouts">
+            <Layouts />
+        </Page>
+
+        <Page url="/palettes">
+            <Palettes />
+        </Page>
+
+        <Page url="/markdown">
+            <Markdown data="pages/markdown-testbed.md" />
+        </Page>
+
+        <Page url="/combined">
+            <Combined />
+        </Page>
+
+        <Page url="/notes">
+            <Markdown data="pages/notes.md" />
+        </Page>
+
 
     </Pages>
 

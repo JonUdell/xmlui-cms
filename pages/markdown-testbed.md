@@ -8,6 +8,9 @@
 >
 > Back to the first level
 
+> This is normal blockquote
+> on two lines
+
 ## Callout / admonition
 
 Text above
