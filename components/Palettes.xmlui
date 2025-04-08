@@ -2,6 +2,8 @@
 
 <H1>Surface</H1>
 
+<Text>{foo(123)}</Text>
+
 <HStack>
 
 <VStack>

@@ -1,7 +1,6 @@
 {
    "themes": [
       "themes/earthtone.json",
-      "themes/github.json",
-      "themes/custom-gray.json"
+      "themes/github.json"
   ]
  }
