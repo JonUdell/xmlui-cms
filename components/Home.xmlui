@@ -1,6 +1,6 @@
 <Component name="Home">
 
-<Markdown><![CDATA[
+    <Markdown><![CDATA[
 
 # Learn XMLUI
 
@@ -19,11 +19,11 @@ This paragraph is rendered by the [Markdown](https://xmlui-docs.azurewebsites.ne
 Here's a live report on the status of London's tube stations, rendered by the [List](https://xmlui-docs.azurewebsites.net/components/List/) component wired to an API:
 ]]></Markdown>
 
-<List inspect="true" data="https://api.tfl.gov.uk/line/mode/tube/status">
-    <Text>{$item.name}: {$item.lineStatuses[0].statusSeverityDescription}</Text>
-</List>
+    <List inspect="true" data="https://api.tfl.gov.uk/line/mode/tube/status">
+        <Text>{$item.name}: {$item.lineStatuses[0].statusSeverityDescription}</Text>
+    </List>
 
-<Markdown><![CDATA[
+    <Markdown><![CDATA[
 
 Here is the XML markup that produces this live display.
 
@@ -86,18 +86,17 @@ To extract the status from each object, `$item` uses JavaScript dot notation and
         <ContentSeparator marginTop="2rem" height="8rem" size="2px" orientation="vertical" />
 
         <VStack>
+            <Text variant="strong">Live rendering</Text>
 
-        <Text variant="strong">Live rendering</Text>
-
-        <Stack verticalAlignment="center">s
-            <Stack horizontalAlignment="start">
-                <Select width="15rem" id="lines" initialValue="bakerloo">
-                    <Items data="https://api.tfl.gov.uk/line/mode/tube/status">
-                        <Option value="{$item.id}" label="{$item.name}" />
-                    </Items>
-                </Select>
+            <Stack verticalAlignment="center">
+                <Stack horizontalAlignment="start">
+                    <Select width="15rem" id="lines" initialValue="bakerloo">
+                        <Items data="https://api.tfl.gov.uk/line/mode/tube/status">
+                            <Option value="{$item.id}" label="{$item.name}" />
+                        </Items>
+                    </Select>
+                </Stack>
             </Stack>
-        </Stack>
         </VStack>
     </HStack>
 
@@ -110,17 +109,15 @@ The `Select` uses the same API as the `List`. It contains an <a href="https://xm
 >[!INFO]
 > If you hover over the live rendering you'll see a button you can click to inspect the XMLUI markup: <img style="display:inline;width:32px" src="resources/inspect.png"/>. Use it on all the live elements in this page to see how they work!
 
-Nothing happens yet when you select a tube line. Let's wire up the selection to display details for the line in a <a href="https://xmlui-docs.azurewebsites.net/components/Table" target="blank">Table</a>.
-    ]]>
-    </Markdown>
+Nothing happens yet when you select a tube line. Let's wire up the selection to display details for the selected line in a <a href="https://xmlui-docs.azurewebsites.net/components/Table" target="blank">Table</a>.
+    ]]></Markdown>
 
     <HStack>
 
-        <Markdown width="60%">
-    <![CDATA[
+        <Markdown width="60%"><![CDATA[
 
 ### Markup
- ```
+```
 <DataSource
   id="stations"
   url="https://api.tfl.gov.uk/Line/{lines.value}/Route/Sequence/inbound"
@@ -128,8 +125,8 @@ Nothing happens yet when you select a tube line. Let's wire up the selection to 
 
 <Text>Line: {lines.value}</Text>
 <Table data="{stations}">
-  <Column bindTo="name" />
-  <Column bindTo="modes" />
+    <Column bindTo="name" />
+    <Column bindTo="modes" />
 </Table>
 ```
 The <a href="https://xmlui-docs.azurewebsites.net/components/DataSource" target="blank">DataSource</a> component works like the `data` attribute we used with `List` and `Items`: it fetches from a REST endpoint. Unlike `List`,`Select`, and `Table`, `DataSource` isn't a visible component. It works behind the scenes to capture data for use by visible components.
@@ -276,47 +273,55 @@ The returned data object is big and complex, and we only want to display data fr
 
 The `resultSelector` property on the `DataSource` targets the nested `stations` object so we can feed just that data into the table.
 
-The `Select` above is wired to the `Table`. When you make a new selection, the table fills with details for the selected line. We can repeat the `Select` here for convenient access. Try it!
+The `Select` is wired to the `Table`. When you make a new selection, the table fills with details for the selected line. Try it!
 
+How does this work? Inspect the `Select` to review its markup. It declares the property `id="lines"`. That makes `lines` a variable accessible other XMLUI components, and `lines.value` holds the value of the current selection.
 
-turned from the API. But notice the URL! It includes a reference to `lines`, the ID of the `Select`. In this context, `lines` is a JavaScript variable, and `lines.value` is the selected line. The initial value of the `Select` is `Bakerloo` so that's the line whose stations we see in the table.
+Now look at the `url` property of the `DataSource`: it embeds a reference to `lines.value`. When you loaded this page, it fetched details for the initial value of the `Select`. When you change the selection it changes the URL and the `DataSource` fetches a new batch of details. Similarly the `Table`'s `data` property refers to the id of the `DataSource`. So when the `DataSource` fetches fresh data, the `Table` notices the change and refills with that fresh data.
 
-Now choose another line and watch the table react to the change. Because we also use `lines.value`, in a `Text`, as the title of the table, that changes too. That's XMLUI-style reactive data binding in a nutshell. You don't need to write code to make this happen, it's automatic!
-
-
+There's a name for this pattern: reactive data binding. It's what spreadsheets do when a change in one cell propagates to others that refer to it. It's what the popular framework React enables for web apps. React, as you may know, is a complex beast that only expert programmers can tame. Fortunately the expert programmers who build XMLUI have done that for you. When you build apps declaratively with
+XMLUI you enjoy the benefit of reactive data binding without the burden of React's complexity. You don't need to write code to make this magic happen, it's automatic!
     ]]></Markdown>
 
         <ContentSeparator marginTop="2rem" height="20rem" orientation="vertical" size="2px" />
 
         <VStack width="40%">
 
-        <Text variant="strong">Live rendering</Text>
+            <Text variant="strong">Live rendering</Text>
 
-        <Stack>
-            <Text variant="em">Line: {lines.value || '(not specified)'}</Text>
-            <Fragment when="{lines.value}">
-                <DataSource
-                    id="stations"
-                    url="https://api.tfl.gov.uk/Line/{lines.value}/Route/Sequence/inbound"
-                    resultSelector="stations" />
+            <Stack verticalAlignment="center">
+                <Stack horizontalAlignment="start">
+                    <Select width="15rem" id="lines" initialValue="bakerloo">
+                        <Items data="https://api.tfl.gov.uk/line/mode/tube/status">
+                            <Option value="{$item.id}" label="{$item.name}" />
+                        </Items>
+                    </Select>
+                </Stack>
+            </Stack>
 
-                <Table data="{stations}" height="600px">
-                    <Column bindTo="name" />
-                    <Column bindTo="modes" />
-                </Table>
-            </Fragment>
-        </Stack>
+
+            <Stack>
+                <Text variant="em">Line: {lines.value || '(not specified)'}</Text>
+                <Fragment when="{lines.value}">
+                    <DataSource
+                        id="stations"
+                        url="https://api.tfl.gov.uk/Line/{lines.value}/Route/Sequence/inbound"
+                        resultSelector="stations" />
+
+                    <Table data="{stations}" height="600px">
+                        <Column bindTo="name" />
+                        <Column bindTo="modes" />
+                    </Table>
+                </Fragment>
+            </Stack>
 
         </VStack>
 
     </HStack>
 
+    <Markdown><![CDATA[
+## Beautiful by default
+    ]]></Markdown>
 
-
-    <Select width="15rem" id="lines" initialValue="bakerloo">
-        <Items data="https://api.tfl.gov.uk/line/mode/tube/status">
-            <Option value="{$item.id}" label="{$item.name}" />
-        </Items>
-    </Select>
 
 </Component>
