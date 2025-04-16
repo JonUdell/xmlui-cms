@@ -1,5 +1,9 @@
 <Component name="Palettes">
 
+    <Text>foo { foo() }</Text>
+
+
+
 <H1>Surface</H1>
 
 <HStack>

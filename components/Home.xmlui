@@ -1,63 +1,31 @@
 <Component name="Home">
 
-    <Markdown>
-    <![CDATA[
+<Markdown><![CDATA[
+
 # Learn XMLUI
 
-XMLUI is a framework for building UIs declaratively with XML markup and flexible theming. Here's the markup for the simplest XMLUI app.
+XMLUI is a framework for building user interfaces declaratively, with XML markup and flexible theming. XMLUI apps are:
 
-```xml
-<App>
-  <Text>Hello World!</Text>
-</App>
-```
+- **Easy to create**. Build on the web platform with little or no knowledge of JavaScript, CSS, or React.
 
-The <a href="https://xmlui-docs.azurewebsites.net/components/Text/" target="_blank">Text</a> component does what you'd expect. Here it is running live in this page:
+- **Beautiful by default**. Enjoy themes that look great out of the box and are easy to modify.
 
-    ]]>
-    </Markdown>
+- **Connected**. Read and write APIs with little or no scripting.
 
-    <Text inspect="true">Hello World!</Text>
+- **Modular**. Use a comprehensive suite of components that you can extend with — again! — little or no scripting.
 
-    <Markdown>
-    <![CDATA[
-Hmm. The previous paragraph just looks like plain inline text. How can you tell it's a live XMLUI component?
+This paragraph is rendered by the [Markdown](https://xmlui-docs.azurewebsites.net/components/Markdown/) component.
 
-> [!INFO]
-> If you hover over an XMLUI component and a button appears,  you can click it to view the component's markup.
+Here's a live report on the status of London's tube stations, rendered by the [List](https://xmlui-docs.azurewebsites.net/components/List/) component wired to an API:
+]]></Markdown>
 
-> Normal blockquote
+<List inspect="true" data="https://api.tfl.gov.uk/line/mode/tube/status">
+    <Text>{$item.name}: {$item.lineStatuses[0].statusSeverityDescription}</Text>
+</List>
 
-Try that on the "Hello World!" paragraph above.
+<Markdown><![CDATA[
 
-<details>
-  <summary>Didn't find the button? Click for a hint. </summary>
-  <video autoplay loop muted>
-    <source src="resources/inspect-text.mp4"/>
-  </video>
-</details>
-    ]]>
-    </Markdown>
-
-    <Markdown>
-    <![CDATA[
-## Working with live data
-
-Let's try something more interesting. XMLUI components can retrieve and display live data. Here's the current status of London's tube lines:
-    ]]>
-    </Markdown>
-
-    <List inspect="true" data="https://api.tfl.gov.uk/line/mode/tube/status">
-        <Text>{$item.name}: {$item.lineStatuses[0].statusSeverityDescription}</Text>
-    </List>
-
-    <Bookmark id="listing-data" />
-
-    <Markdown>
-    <![CDATA[
-## Listing data
-
-You could hover over the above <a href="https://xmlui-docs.azurewebsites.net/components/List" target="blank">List</a> to see the markup but it's very concise so we'll show it here.
+Here is the XML markup that produces this live display.
 
 ```
 <List data="https://api.tfl.gov.uk/line/mode/tube/status">
@@ -65,11 +33,12 @@ You could hover over the above <a href="https://xmlui-docs.azurewebsites.net/com
 </List>
 ```
 
-
 The `List` component receives data by way of the `data` attribute which, in this case, just fetches JSON from a <a href="https://api.tfl.gov.uk/line/mode/tube/status" target="_blank">REST endpoint</a>. Other components, like <a href="https://xmlui-docs.azurewebsites.net/components/Table" target="blank">Table</a>, use the `data` attribute the same way.
 
-<details>
-<summary>See a sample of the data.</summary>
+ The API returns a list of data objects.
+
+ <details>
+<summary>Click to see a sample object</summary>
 <pre>
 [
     {
@@ -87,7 +56,9 @@ The `List` component receives data by way of the `data` attribute which, in this
 </pre>
 </details>
 
- We've seen `Text` as a standalone component. Here, nested within `List`, it renders once for each item in the list. The standard XMLUI variable `$item` holds each successive JSON object. It's a JavaScript variable, so you can use dot notation and array indexing to extract values.
+The `List` renders an XMLIUI component, in this case <a href="https://-docs.azurewebsites.net/components/Text" target="blank">Text</a>, that receives the object in the standard XMLUI variable `$item`.
+
+To extract the status from each object, `$item` uses JavaScript dot notation and array indexing. As an XMLUI developer you'll rarely write functions or entire scripts, though you can. But it's common to write JavaScript expressions to access or transform data.
 
  ## Reactive data binding
 
@@ -99,6 +70,9 @@ The `List` component receives data by way of the `data` attribute which, in this
     <HStack>
         <Markdown width="60%">
     <![CDATA[
+
+### Markup
+
  ```
 <Select id="lines" initialValue="bakerloo" width="30%">
     <Items data="https://api.tfl.gov.uk/line/mode/tube/status">
@@ -109,24 +83,34 @@ The `List` component receives data by way of the `data` attribute which, in this
     ]]>
         </Markdown>
 
-        <ContentSeparator orientation="vertical" size="4px" />
+        <ContentSeparator marginTop="2rem" height="8rem" size="2px" orientation="vertical" />
 
-        <Stack verticalAlignment="center">
-            <Stack horizontalAlignment="center">
-                <Select id="lines" initialValue="bakerloo">
+        <VStack>
+
+        <Text variant="strong">Live rendering</Text>
+
+        <Stack verticalAlignment="center">s
+            <Stack horizontalAlignment="start">
+                <Select width="15rem" id="lines" initialValue="bakerloo">
                     <Items data="https://api.tfl.gov.uk/line/mode/tube/status">
                         <Option value="{$item.id}" label="{$item.name}" />
                     </Items>
                 </Select>
             </Stack>
         </Stack>
+        </VStack>
     </HStack>
 
 
     <Markdown>
     <![CDATA[
 
-Now we'll add a <a href="https://xmlui-docs.azurewebsites.net/components/Table" target="blank">Table</a> to display details about the selected tube line.
+The `Select` uses the same API as the `List`. It contains an <a href="https://xmlui-docs.azurewebsites.net/components/Items" target="blank">Items</a> component which is another way to loop through a sequence and embed a component that receives each item. In this case what's embedded is a selectable <a href="https://xmlui-docs.azurewebsites.net/components/Option" target="blank">Option</a> which again receives the `$item` variable. Here simple dot notation is all that's needed to populate the `Select` with labels and values.
+
+>[!INFO]
+> If you hover over the live rendering you'll see a button you can click to inspect the XMLUI markup: <img style="display:inline;width:32px" src="resources/inspect.png"/>. Use it on all the live elements in this page to see how they work!
+
+Nothing happens yet when you select a tube line. Let's wire up the selection to display details for the line in a <a href="https://xmlui-docs.azurewebsites.net/components/Table" target="blank">Table</a>.
     ]]>
     </Markdown>
 
@@ -134,6 +118,8 @@ Now we'll add a <a href="https://xmlui-docs.azurewebsites.net/components/Table" 
 
         <Markdown width="60%">
     <![CDATA[
+
+### Markup
  ```
 <DataSource
   id="stations"
@@ -146,21 +132,168 @@ Now we'll add a <a href="https://xmlui-docs.azurewebsites.net/components/Table" 
   <Column bindTo="modes" />
 </Table>
 ```
-The <a href="https://xmlui-docs.azurewebsites.net/components/DataSource" target="blank">DataSource</a> component works like the `data` attribute we used with `Select`: it fetches from a REST endpoint. Unlike `Select` and `Table`, `DataSource` isn't a visible component, it works behind the scenes to capture data for use by visible components.
+The <a href="https://xmlui-docs.azurewebsites.net/components/DataSource" target="blank">DataSource</a> component works like the `data` attribute we used with `List` and `Items`: it fetches from a REST endpoint. Unlike `List`,`Select`, and `Table`, `DataSource` isn't a visible component. It works behind the scenes to capture data for use by visible components.
 
-We use `resultSelector` to target the `stations` key of the JSON object returned from the API. But notice the URL! It includes a reference to `lines`, the ID of the `Select`. In this context, `lines` is a JavaScript variable, and `lines.value` is the selected line. The initial value of the `Select` is `Bakerloo` so that's the line whose stations we see in the table.
+The returned data object is big and complex, and we only want to display data from the `stations` object nested within in it.
+
+<details>
+<summary>Click to see a sample object</summary>
+<pre>
+{
+    "$type": "Tfl.Api.Presentation.Entities.RouteSequence, Tfl.Api.Presentation.Entities",
+    "lineId": "bakerloo",
+    "lineName": "Bakerloo",
+    "direction": "inbound",
+    "isOutboundOnly": false,
+    "mode": "tube",
+    "lineStrings": [
+        "[[[-0.335217,51.592268],[-0.31691,51.581756],[-0.308433,51.570232],[-0.304,51.562551],[-0.296852,51.552304],[-0.275892,51.543959],[-0.257883,51.53631],[-0.244283,51.532259],[-0.225016,51.530539],[-0.204574,51.534158],[-0.194232,51.534979],[-0.185758,51.529777],[-0.183783,51.523263],[-0.175689,51.516581],[-0.17015,51.520299],[-0.163207,51.522322],[-0.15713,51.522883],[-0.146444,51.523344],[-0.141903,51.515224],[-0.133798,51.51005],[-0.127277,51.50741],[-0.122666,51.507058],[-0.11478,51.503299],[-0.112315,51.498808],[-0.100606,51.494536]]]"
+    ],
+    <b>"stations": [
+        {
+            "$type": "Tfl.Api.Presentation.Entities.MatchedStop, Tfl.Api.Presentation.Entities",
+            "stationId": "940GZZLUBST",
+            "icsId": "1000011",
+            "topMostParentId": "940GZZLUBST",
+            "modes": [
+                "tube"
+            ],
+            "stopType": "NaptanMetroStation",
+            "zone": "1",
+            "lines": [
+                {
+                    "$type": "Tfl.Api.Presentation.Entities.Identifier, Tfl.Api.Presentation.Entities",
+                    "id": "bakerloo",
+                    "name": "Bakerloo",
+                    "uri": "/Line/bakerloo",
+                    "type": "Line",
+                    "crowding": {
+                        "$type": "Tfl.Api.Presentation.Entities.Crowding, Tfl.Api.Presentation.Entities"
+                    },
+                    "routeType": "Unknown",
+                    "status": "Unknown"
+                },
+                {
+                    ... more lines ...
+                }
+            ],
+            "status": true,
+            "id": "940GZZLUBST",
+            "name": "Baker Street Underground Station",
+            "lat": 51.522883,
+            "lon": -0.15713
+        },
+        {
+            ... more stations ...
+        }
+    ],</b>
+"stopPointSequences": [
+        {
+            "$type": "Tfl.Api.Presentation.Entities.StopPointSequence, Tfl.Api.Presentation.Entities",
+            "lineId": "bakerloo",
+            "lineName": "Bakerloo",
+            "direction": "inbound",
+            "branchId": 0,
+            "nextBranchIds": [],
+            "prevBranchIds": [],
+            "stopPoint": [
+                {
+                    "$type": "Tfl.Api.Presentation.Entities.MatchedStop, Tfl.Api.Presentation.Entities",
+                    "parentId": "HUBHRW",
+                    "stationId": "940GZZLUHAW",
+                    "icsId": "1000101",
+                    "topMostParentId": "HUBHRW",
+                    "modes": [
+                        "tube"
+                    ],
+                    "stopType": "NaptanMetroStation",
+                    "zone": "5",
+                    "hasDisruption": true,
+                    "lines": [
+                        {
+                            "$type": "Tfl.Api.Presentation.Entities.Identifier, Tfl.Api.Presentation.Entities",
+                            "id": "bakerloo",
+                            "name": "Bakerloo",
+                            "uri": "/Line/bakerloo",
+                            "type": "Line",
+                            "crowding": {
+                                "$type": "Tfl.Api.Presentation.Entities.Crowding, Tfl.Api.Presentation.Entities"
+                            },
+                            "routeType": "Unknown",
+                            "status": "Unknown"
+                        }
+                    ],
+                    "status": true,
+                    "id": "940GZZLUHAW",
+                    "name": "Harrow & Wealdstone Underground Station",
+                    "lat": 51.592268,
+                    "lon": -0.335217
+                },
+                {
+                    ... more stop points
+                }
+            ],
+            "serviceType": "Regular"
+        }
+    ],
+    "orderedLineRoutes": [
+        {
+            "$type": "Tfl.Api.Presentation.Entities.OrderedRoute, Tfl.Api.Presentation.Entities",
+            "name": "Harrow & Wealdstone  &harr;  Elephant & Castle ",
+            "naptanIds": [
+                "940GZZLUHAW",
+                "940GZZLUKEN",
+                "940GZZLUSKT",
+                "940GZZLUNWY",
+                "940GZZLUWYC",
+                "940GZZLUSGP",
+                "940GZZLUHSN",
+                "940GZZLUWJN",
+                "940GZZLUKSL",
+                "940GZZLUQPS",
+                "940GZZLUKPK",
+                "940GZZLUMVL",
+                "940GZZLUWKA",
+                "940GZZLUPAC",
+                "940GZZLUERB",
+                "940GZZLUMYB",
+                "940GZZLUBST",
+                "940GZZLURGP",
+                "940GZZLUOXC",
+                "940GZZLUPCC",
+                "940GZZLUCHX",
+                "940GZZLUEMB",
+                "940GZZLUWLO",
+                "940GZZLULBN",
+                "940GZZLUEAC"
+            ],
+            "serviceType": "Regular"
+        }
+    ]
+}
+</pre>
+</details>
+
+The `resultSelector` property on the `DataSource` targets the nested `stations` object so we can feed just that data into the table.
+
+The `Select` above is wired to the `Table`. When you make a new selection, the table fills with details for the selected line. We can repeat the `Select` here for convenient access. Try it!
+
+
+turned from the API. But notice the URL! It includes a reference to `lines`, the ID of the `Select`. In this context, `lines` is a JavaScript variable, and `lines.value` is the selected line. The initial value of the `Select` is `Bakerloo` so that's the line whose stations we see in the table.
 
 Now choose another line and watch the table react to the change. Because we also use `lines.value`, in a `Text`, as the title of the table, that changes too. That's XMLUI-style reactive data binding in a nutshell. You don't need to write code to make this happen, it's automatic!
 
 
-    ]]>
-        </Markdown>
+    ]]></Markdown>
 
-        <ContentSeparator orientation="vertical" size="4px" />
+        <ContentSeparator marginTop="2rem" height="20rem" orientation="vertical" size="2px" />
 
+        <VStack width="40%">
 
-        <Stack width="40%">
-            <Text>Line: {lines.value || '(not specified)'}</Text>
+        <Text variant="strong">Live rendering</Text>
+
+        <Stack>
+            <Text variant="em">Line: {lines.value || '(not specified)'}</Text>
             <Fragment when="{lines.value}">
                 <DataSource
                     id="stations"
@@ -174,7 +307,16 @@ Now choose another line and watch the table react to the change. Because we also
             </Fragment>
         </Stack>
 
+        </VStack>
+
     </HStack>
 
+
+
+    <Select width="15rem" id="lines" initialValue="bakerloo">
+        <Items data="https://api.tfl.gov.uk/line/mode/tube/status">
+            <Option value="{$item.id}" label="{$item.name}" />
+        </Items>
+    </Select>
 
 </Component>

@@ -2,6 +2,7 @@
    "themes": [
       "themes/earthtone.json",
       "themes/github.json",
-      "themes/custom-gray.json"
+      "themes/custom-gray.json",
+      "themes/xmluiPurple.json"
   ]
  }

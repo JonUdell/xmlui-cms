@@ -1,5 +1,4 @@
 <App
-    inspect="true"
     layout="vertical-sticky"
     logo="resources/xmlui-logo.svg"
     logo-dark="resources/logo-dark.svg"
@@ -7,7 +6,7 @@
     defaultTheme="earthtone"
 >
 
-    <AppHeader inspect="true">
+    <AppHeader>
 
         <Select
             id="pickTheme"
@@ -28,11 +27,14 @@
 
     </AppHeader>
 
-    <NavPanel
-        inspect="true">
+    <NavPanel>
 
         <NavLink label="Introduction" to="/" />
 
+        <NavLink label="Tests" to="/tests" />
+
+        <NavLink label="Docsite" to="/docsite" />
+<!--
         <NavGroup label="Demos">
             <NavGroup label="Workflow" to="/workflow">
             </NavGroup>
@@ -54,13 +56,27 @@
 
         <NavLink label="Notes" to="/notes" />
 
+-->
+
     </NavPanel>
 
 
     <Pages>
+
         <Page url="/">
             <Home />
         </Page>
+
+        <Page url="/docsite">
+            <Markdown data="pages/docsite.md"/>
+        </Page>
+
+        <Page url="/tests">
+            <Test/>
+        </Page>
+
+
+
 
 <!--
         <Page url="/workflow">
@@ -98,6 +114,14 @@
 
         <Page url="/notes">
             <Markdown data="pages/notes.md" />
+        </Page>
+
+        <Page url="sheet">
+            <Sheet />
+        </Page>
+
+        <Page url="/test">
+            <Test />
         </Page>
 
 

@@ -1,0 +1,84 @@
+<Component
+   name="Test"
+   var.pageFetch="0"
+   var.pageDone="0"
+   var.allTitles="{ [] }"
+>
+
+<DataSource
+  id="fb"
+  url="https://api.github.com/repos/facebook/react/issues?per_page=2&page={pageFetch}"
+  transformResult="{ (data ) => { const titles = data.map(i => i.number + ':' + i.title);  return titles} } "
+  onLoaded="{ pageDone = pageFetch; pageFetch < 3 ? pageFetch++ : '' }"
+/>
+
+<ChangeListener
+  listenTo="{pageDone}"
+  onDidChange="{ console.log('pageDone', pageDone); if (fb.value) { allTitles = allTitles.concat(fb.value) } }"
+/>
+
+<Text preserveLinebreaks="true">
+  { JSON.stringify(fb.value, null, 2) }
+</Text>
+
+<DataSource
+  id="fb2"
+  url="https://api.github.com/repos/facebook/react/issues"
+/>
+
+
+<Text preserveLinebreaks="true">
+  { JSON.stringify(fb2, null, 2) }
+</Text>
+
+
+
+
+
+  <!--
+  <DataSource
+    id="fb"
+    url="https://api.github.com/repos/facebook/react/issues?page={page}"
+    transformResult="{(data) => data.map(i => i.title)}"
+    />
+
+
+  # Stations
+
+  <DataSource
+  id="stations"
+  url="https://api.tfl.gov.uk/Line/Victoria/Route/Sequence/inbound"
+  onLoaded="(data) => console.log(data)"
+  resultSelector="stations.map(station => station.name)"
+/>
+
+<Text preserveLinebreaks="true">
+  Results:
+  {JSON.stringify(stations,null,2)}
+</Text>
+
+
+  <DataSource
+    id="tubeStatus"
+    url="https://api.tfl.gov.uk/line/Victoria/status"
+    completedNotificationMessage="{JSON.stringify($result,null,2)} " />
+
+  <Select id="picklist" initialValue="1">
+    <Items data="{[1,2,3]}">
+      <Option value="{$item}" label="{$item}" />
+    </Items>
+  </Select>
+
+  <Button label="reset" onClick="{picklist.reset()}" />
+
+  <Select id="picklist2">
+    <Items data="{[1,2,3]}">
+      <Option value="{$item}" label="{$item}" />
+    </Items>
+  </Select>
+
+  <Button label="reset" onClick="{picklist2.reset()}" />
+   -->
+
+
+</Component>
