@@ -9,14 +9,22 @@
   <Text variant="strong">{$props.line}</Text>
 
   <Table data="{stops}">
-    <Column bindTo="name" />
+    <Column width="3*" bindTo="name" />
     <Column bindTo="zone" />
-    <Column bindTo="wifi" />
-    <Column bindTo="toilets" />
+    <Column bindTo="wifi" >
+      <Fragment when="{$item.wifi === 'yes'}">
+        <Icon name="checkmark"/>
+      </Fragment>
+    </Column>
+    <Column bindTo="toilets" >
+      <Fragment when="{$item.toilets === 'yes'}">
+        <Icon name="checkmark"/>
+      </Fragment>
+    </Column>
+
     <Column bindTo="lifts" />
     <Column bindTo="escalators" />
     <Column bindTo="cash_machines" />
-    <Column bindTo="lines" />
   </Table>
 
 </Component>
