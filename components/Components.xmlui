@@ -1,6 +1,6 @@
 <Component name="Components">
 
-  <Markdown><![CDATA[
+<Markdown><![CDATA[
 # Components
 
 We've already seen a number of XMLUI components in action: [DataSource](https://xmlui-docs.azurewebsites.net/components/DataSource),
@@ -10,6 +10,9 @@ We've already seen a number of XMLUI components in action: [DataSource](https://
 [Select](https://xmlui-docs.azurewebsites.net/components/Select),
 [Option](https://xmlui-docs.azurewebsites.net/components/Option),
 [Table](https://xmlui-docs.azurewebsites.net/components/Table).
+
+## Built-in components
+
 As an XMLUI developer you'll create user interfaces by combining these with others in the [core library](https://xmlui-docs.azurewebsites.net/components/), drawing from these categories:
 
 **Data**: [AppState](https://xmlui-docs.azurewebsites.net/components/AppState),
@@ -42,13 +45,15 @@ As an XMLUI developer you'll create user interfaces by combining these with othe
 [Tabs](https://xmlui-docs.azurewebsites.net/components/Tabs),
 [TabItem](https://xmlui-docs.azurewebsites.net/components/TabItem) ...
 
+## Custom components
+
 You'll also create your own components to combine and extend the built-ins. For example, here's a component that represents the stops on a London tube line.
 
 ```xmlui
 <TubeStops line="Bakerloo"/>
 ```
 
-An instance of the component extracts details for a given tube line. Multiple instances can be arranged on the display using layout components.
+An instance of `TubeStops` extracts details for a given tube line. Multiple instances can be arranged on the display using layout components. For example, here's a two-column layout.
 
 ```xmlui
   <HStack>
@@ -70,5 +75,59 @@ An instance of the component extracts details for a given tube line. Multiple in
       <TubeStops line="Victoria" />
     </Stack>
   </HStack>
+
+<Markdown><![CDATA[
+
+## Anatomy of a custom component
+
+Here's the XMLUI markup for the `<TubeStops>` component.
+
+```xmlui
+<Component name="TubeStops">
+
+  <DataSource
+    id="stops"
+    url="https://api.tfl.gov.uk/Line/{$props.line}/StopPoints"
+    transformResult="{transformStops}"
+  />
+
+  <Text variant="strong">{$props.line}</Text>
+
+  <Table data="{stops}">
+    <Column width="3*" bindTo="name" />
+    <Column bindTo="zone" />
+    <Column bindTo="wifi" >
+      <Fragment when="{$item.wifi === 'yes'}">
+        <Icon name="checkmark"/>
+      </Fragment>
+    </Column>
+    <Column bindTo="toilets" >
+      <Fragment when="{$item.toilets === 'yes'}">
+        <Icon name="checkmark"/>
+      </Fragment>
+    </Column>
+
+    <Column bindTo="lifts" />
+    <Column bindTo="escalators" />
+    <Column bindTo="cash_machines" />
+  </Table>
+
+</Component>
+```
+
+It illustrates these common patterns.
+
+- **Define a dynamic data source**. When this page embeds `<TubeStops line="Bakerloo"/>`, the `TubeStops` component receives a `line` property used to form the URL that fetches data.
+
+- **Transform data**. When API responses are complex, the expressions needed to unpack them can clutter your XMLUI markup. In this case the  component offloads that work to a `transformStops` function so it can work with a simplified structure.
+
+- **Enrich data**. The transformed data has `yes`/`no` values for `wifi` and `toilets`. `TubeStops` uses [Fragment](https://xmlui-docs.azurewebsites.net/components/Fragment) to display an [Icon](https://xmlui-docs.azurewebsites.net/components/Icon) only for `yes` values.
+]]></Markdown>
+
+When you use custom components to access, transform, and present data, your XMLUI markup stays clean, readable, and easy to read and maintain.
+
+
+<Link icon="arrowright" label="Themes" to="/themes" />
+
 
 </Component>

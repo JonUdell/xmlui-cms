@@ -35,6 +35,10 @@
             <Components />
         </Page>
 
+        <Page url="/themes">
+            <Themes />
+        </Page>
+
         <Page url="/icons">
             <Icons />
         </Page>
