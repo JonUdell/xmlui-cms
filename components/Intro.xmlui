@@ -1,0 +1,39 @@
+<Component name="Intro">
+
+    <Markdown><![CDATA[
+# Introduction
+
+XMLUI is a framework for building user interfaces declaratively, with XML markup and flexible theming. XMLUI apps are:
+
+- **Easy to create**. Build on the web platform with little or no knowledge of JavaScript, CSS, or React.
+
+- **Beautiful by default**. Enjoy themes that look great out of the box and are easy to modify.
+
+- **Connected**. Read and write APIs with little or no scripting.
+
+- **Modular**. Use a comprehensive suite of [components](https://xmlui-docs.azurewebsites.net/components/) that you can extend with — again! — little or no scripting.
+
+This paragraph is static text displayed by XMLUI's [Markdown](https://xmlui-docs.azurewebsites.net/components/Markdown/) component.
+
+This list is a live report on the status of London's tube stations. When you reload the page you'll see fresh data.
+]]></Markdown>
+
+    <List inspect="true" data="https://api.tfl.gov.uk/line/mode/tube/status">
+        <Text>{$item.name}: {$item.lineStatuses[0].statusSeverityDescription}</Text>
+    </List>
+
+    <Markdown><![CDATA[
+Here's the XMLUI markup behind the report.
+
+```
+<List data="https://api.tfl.gov.uk/line/mode/tube/status">
+  <Text>{$item.name}: {$item.lineStatuses[0].statusSeverityDescription}</Text>
+</List>
+```
+
+The [List](https://xmlui-docs.azurewebsites.net/components/List/) component fetches JSON from a <a href="https://api.tfl.gov.uk/line/mode/tube/status" target="_blank">REST endpoint</a>. (Other components, like <a href="https://xmlui-docs.azurewebsites.net/components/Table" target="blank">Table</a>, use the `data` attribute the same way.) JSON objects returned from the API map to the `$item` context variable, and the [Text](https://xmlui-docs.azurewebsites.net/components/Text) component uses JavaScript dot notation and array indexing to extract station names and statuses.
+    ]]></Markdown>
+
+<Link icon="arrowright" label="Reactive data binding" to="/reactive"/>
+
+</Component>

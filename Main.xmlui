@@ -6,57 +6,17 @@
     defaultTheme="earthtone"
 >
 
-    <AppHeader>
-
-        <Select
-            id="pickTheme"
-            width="30%"
-            initialValue="earthtone"
-            onDidChange="(newTheme) => setTheme(newTheme)"
-        >
-            <Option value="earthtone" label="earthtone" />
-            <Option value="github" label="github" />
-            <Option value="custom-gray" label="custom-gray" />
-            <Option value="xmlui" label="xmlui " />
-            <Option value="xmlui-cyan" label="xmlui-cyan " />
-            <Option value="xmlui-gray" label="xmlui-gray " />
-            <Option value="xmlui-green" label="xmlui-green " />
-            <Option value="xmlui-purple" label="xmlui-purple " />
-            <Option value="xmlui-orange" label="xmlui-orange " />
-        </Select>
-
-    </AppHeader>
 
     <NavPanel>
 
-        <NavLink label="Introduction" to="/" />
-
-        <NavLink label="Tests" to="/tests" />
-
-        <NavLink label="Docsite" to="/docsite" />
-<!--
-        <NavGroup label="Demos">
-            <NavGroup label="Workflow" to="/workflow">
-            </NavGroup>
-            <NavGroup label="Data Visualization" to="/dataVisualization">
-            </NavGroup>
-            <NavGroup label="Invoices" to="/invoices">
-            </NavGroup>
+        <NavGroup label="Learn XMLUI" initiallyExpanded="true">
+            <NavLink label="Introduction" to="/" />
+            <NavLink label="Reactive Data" to="/reactive" />
+            <NavLink label="Components" to="/components" />
+            <NavLink label="Themes" to="/themes" />
         </NavGroup>
 
-        <NavLink label="Components" to="/components" />
-
-        <NavLink label="Layouts" to="/layouts" />
-
-        <NavLink label="Palettes" to="/palettes" />
-
-        <NavLink label="MarkdownTestbed" to="/markdown" />
-
-        <NavLink label="CombinedTestbed" to="/combined" />
-
-        <NavLink label="Notes" to="/notes" />
-
--->
+        <NavLink label="Icons" to="/icons" />
 
     </NavPanel>
 
@@ -64,44 +24,19 @@
     <Pages>
 
         <Page url="/">
-            <Home />
+            <Intro />
         </Page>
 
-        <Page url="/docsite">
-            <Markdown data="pages/docsite.md"/>
+        <Page url="/reactive">
+            <Reactive />
         </Page>
-
-        <Page url="/tests">
-            <Test/>
-        </Page>
-
-
-
-
-<!--
-        <Page url="/workflow">
-            <Workflow/>
-        </Page>
-
-        <Page url="/dataVisualization">
-            <DataVisualization />
-        </Page>
-
-        <Page url="/invoices">
-            <Invoices />
-        </Page>
--->
 
         <Page url="/components">
             <Components />
         </Page>
 
-        <Page url="/layouts">
-            <Layouts />
-        </Page>
-
-        <Page url="/palettes">
-            <Palettes />
+        <Page url="/icons">
+            <Icons />
         </Page>
 
         <Page url="/markdown">
@@ -127,16 +62,31 @@
 
     </Pages>
 
+    <!--
+    <AppHeader>
 
-    <Footer>
-        <Text>
-            Powered by XMLUI
-        </Text>
-        <Button
-            variant="ghost"
-            icon="{activeThemeTone === 'light' ? 'moon' : 'sun'}"
-            onClick="setThemeTone(activeThemeTone === 'dark' ? 'light' : 'dark')"
-        />
+        <Select
+            id="pickTheme"
+            width="30%"
+            initialValue="earthtone"
+            onDidChange="(newTheme) => setTheme(newTheme)"
+        >
+            <Option value="earthtone" label="earthtone" />
+            <Option value="github" label="github" />
+            <Option value="custom-gray" label="custom-gray" />
+            <Option value="xmlui" label="xmlui " />
+            <Option value="xmlui-cyan" label="xmlui-cyan " />
+            <Option value="xmlui-gray" label="xmlui-gray " />
+            <Option value="xmlui-green" label="xmlui-green " />
+            <Option value="xmlui-purple" label="xmlui-purple " />
+            <Option value="xmlui-orange" label="xmlui-orange " />
+        </Select>
+
+    </AppHeader>
+-->
+
+    <Footer> Built with XMLUI <ToneChangerButton />
     </Footer>
+
 
 </App>
