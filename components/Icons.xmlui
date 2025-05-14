@@ -16,7 +16,7 @@
         'start', 'stop', 'restart', 'duplicate', 'connect', 'cog', 'sun', 'moon', 'share',
         'new-window', 'paint', 'palette', 'trending-up', 'trending-down', 'trending-level',
         'sortasc', 'sortdesc', 'nosort', 'arrowdown', 'square', 'squarehalf', 'squarefill'
-    ].sort()}"
+    ].toSorted()}"
 >
 <FlowLayout gap="$space-2" padding="$space-2">
     <Items data="{names}">
