@@ -1,7 +1,17 @@
 <Component name="Palettes">
 
-    <Text>foo { foo() }</Text>
-
+<Select
+    id="pickTheme"
+    width="30%"
+    initialValue="xmlui"
+    onDidChange="(newTheme) => setTheme(newTheme)"
+>
+    <Option value="xmlui" label="xmlui" />
+    <Option value="earthtone" label="earthtone" />
+    <Option value="xmlui-green" label="xmlui-green" />
+    <Option value="xmlui-orange" label="xmlui-orange" />
+    <Option value="xmlui-gray" label="xmlui-gray" />
+</Select>
 
 
 <H1>Surface</H1>
@@ -500,7 +510,7 @@
 
 </HStack>
 
-<H1>Sucess</H1>
+<H1>Success</H1>
 
 <HStack>
 

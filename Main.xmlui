@@ -3,7 +3,6 @@
     logo="resources/xmlui-logo.svg"
     logo-dark="resources/logo-dark.svg"
     defaultTone="light"
-    defaultTheme="earthtone"
 >
 
 
@@ -13,9 +12,22 @@
             <NavLink label="Introduction" to="/" />
             <NavLink label="Reactive Data" to="/reactive" />
             <NavLink label="Components" to="/components" />
+            <NavLink label="Themes" to="/themes-overview" />
+        </NavGroup>
+
+        <NavGroup label="Create XMLUI Apps" initiallyExpanded="true">
+            <NavLink label="Markup" to="/" />
+            <NavLink label="Code" to="/" />
+            <NavLink label="The App Component" to="/" />
+            <NavLink label="Working with Text" to="/" />
+            <NavLink label="Routing and Links" to="/" />
+            <NavLink label="Forms" to="/" />
+            <NavLink label="Modal Dialogs" to="/" />
             <NavLink label="Themes" to="/themes" />
         </NavGroup>
 
+
+        <NavLink label="Palettes" to="/palettes" />
         <NavLink label="Icons" to="/icons" />
 
     </NavPanel>
@@ -35,7 +47,7 @@
             <Components />
         </Page>
 
-        <Page url="/themes">
+        <Page url="/themes-overview">
             <Themes />
         </Page>
 
@@ -43,51 +55,22 @@
             <Icons />
         </Page>
 
-        <Page url="/markdown">
-            <Markdown data="pages/markdown-testbed.md" />
+        <Page url="/palettes">
+            <Palettes />
         </Page>
 
-        <Page url="/combined">
-            <Combined />
+
+        <Page url="/xmlui-theme">
+            <Markdown data="pages/xmlui-theme.md" />
         </Page>
 
-        <Page url="/notes">
-            <Markdown data="pages/notes.md" />
-        </Page>
-
-        <Page url="sheet">
-            <Sheet />
-        </Page>
-
-        <Page url="/test">
-            <Test />
+        <Page url="/themes">
+            <Markdown data="pages/themes.md" />
         </Page>
 
 
     </Pages>
 
-    <!--
-    <AppHeader>
-
-        <Select
-            id="pickTheme"
-            width="30%"
-            initialValue="earthtone"
-            onDidChange="(newTheme) => setTheme(newTheme)"
-        >
-            <Option value="earthtone" label="earthtone" />
-            <Option value="github" label="github" />
-            <Option value="custom-gray" label="custom-gray" />
-            <Option value="xmlui" label="xmlui " />
-            <Option value="xmlui-cyan" label="xmlui-cyan " />
-            <Option value="xmlui-gray" label="xmlui-gray " />
-            <Option value="xmlui-green" label="xmlui-green " />
-            <Option value="xmlui-purple" label="xmlui-purple " />
-            <Option value="xmlui-orange" label="xmlui-orange " />
-        </Select>
-
-    </AppHeader>
--->
 
     <Footer> Built with XMLUI <ToneChangerButton />
     </Footer>

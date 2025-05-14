@@ -1,5 +1,59 @@
 <Component name="Themes">
 
-# Themes
+<H1>Themes</H1>
+
+
+<Markdown><![CDATA[
+We've seen how XMLUI enables reactive data binding without requiring you to master React's complexity. The same principle applies to layout and style: XMLUI's theme system ensures that your apps look good and behave gracefully without requiring you to master the complexity of CSS (Cascading Style Sheets). We are using the default theme. Use the dropdown to switch to a custom theme called `earthtone`.
+]]></Markdown>
+
+<Select
+    id="pickTheme"
+    width="30%"
+    initialValue="xmlui"
+    onDidChange="(newTheme) => setTheme(newTheme)"
+>
+    <Option value="xmlui" label="xmlui" />
+    <Option value="earthtone" label="earthtone" />
+</Select>
+
+<Markdown><![CDATA[
+You've now switched the settings for [thousands of theme variables](/xmlui-theme). Each theme variable defines the value that influences an aspect of a component's appearance: text color and font, background color, margin, border, padding, etc. They follow a naming conventional that enables a setting to control appearance globally or in progressively more granular ways. For example, here are the variables that can control the border color of a solid button using the primary color when the mouse hovers over it:
+
+```text
+color-primary
+backgroundColor-Button
+backgroundColor-Button-solid
+backgroundColor-Button-primary
+backgroundColor-Button-primary-solid
+backgroundColor-Button-primary-solid--hover
+```
+
+When it renders a button, XMLUI works up the chain from the most specific setting to the most general. This arrangement gives designers many degrees of freedom to craft exquisitely detailed themes. But almost all the settings are optional, and those that are defined by default use other variables instead of hardcoded values. So, for example, the default setting for `backgroundColor-Button-primary` is `$color-primary-500`. That's the midpoint in a range of colors that play a primary role in the UI. There's a set of such roles, each associated with a color palette. The key roles are:
+
+- **Surface** creates neutral backgrounds and containers
+- **Primary** draws attention to important elements and actions
+- **Secondary** provides visual support without competing with primary elements
+]]></Markdown>
+
+<Markdown><![CDATA[
+On [this page](/palettes) you can see the complete set of roles and explore how different themes express them.
+
+ To create a new theme you can minimally supply just three values: for `$color-primary`, `$color-secondary`, and `$color-surface`. Here is the complete definition for our custom `earthtone` theme.
+
+```json
+{
+  "name": "Earthtone",
+  "id": "earthtone",
+  "themeVars": {
+    "color-primary": "hsl(30, 50%, 30%)",
+    "color-secondary": "hsl(120, 40%, 25%)",
+    "color-surface": "hsl(39, 43%, 97%)",
+  }
+}
+```
+]]></Markdown>
+
+
 
 </Component>
