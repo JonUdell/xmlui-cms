@@ -168,6 +168,6 @@ Another way to keep your markup clean: rely on XMLUI's layout and style engine t
 
 ]]></Markdown>
 
-<Link icon="arrowright" label="Themes" to="/themes" />
+<Link icon="arrowright" label="Themes" to="/themes-overview" />
 
 </Component>
