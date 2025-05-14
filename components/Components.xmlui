@@ -1,6 +1,6 @@
 <Component name="Components">
 
-<Markdown><![CDATA[
+  <Markdown><![CDATA[
 # Components
 
 We've already seen a number of XMLUI components in action: [DataSource](https://xmlui-docs.azurewebsites.net/components/DataSource),
@@ -58,29 +58,41 @@ An instance of `TubeStops` extracts details for a given tube line. Multiple inst
 ```xmlui
   <HStack>
     <Stack width="50%">
-      <TubeStops line="Bakerloo" />
+      <TubeStops line="victoria" />
     </Stack>
+
+    <SpaceFiller />
+
     <Stack width="50%">
-      <TubeStops line="Victoria" />
+      <TubeStops line="waterloo-city" />
     </Stack>
+
   </HStack>
 ```
 ]]></Markdown>
 
   <HStack>
     <Stack width="50%">
-      <TubeStops line="Bakerloo" />
+      <TubeStops line="victoria" />
     </Stack>
+
+    <SpaceFiller />
+
     <Stack width="50%">
-      <TubeStops line="Victoria" />
+      <TubeStops line="waterloo-city" />
     </Stack>
+
   </HStack>
 
+<H2>Anatomy of a custom component</H2>
+
 <Markdown><![CDATA[
-
-## Anatomy of a custom component
-
 Here's the XMLUI markup for the `<TubeStops>` component.
+]]></Markdown>
+
+<HStack>
+
+    <Markdown width="50%"><![CDATA[
 
 ```xmlui
 <Component name="TubeStops">
@@ -106,28 +118,56 @@ Here's the XMLUI markup for the `<TubeStops>` component.
         <Icon name="checkmark"/>
       </Fragment>
     </Column>
-
-    <Column bindTo="lifts" />
-    <Column bindTo="escalators" />
-    <Column bindTo="cash_machines" />
   </Table>
 
 </Component>
 ```
+    ]]></Markdown>
 
-It illustrates these common patterns.
+    <SpaceFiller />
 
-- **Define a dynamic data source**. When this page embeds `<TubeStops line="Bakerloo"/>`, the `TubeStops` component receives a `line` property used to form the URL that fetches data.
-
-- **Transform data**. When API responses are complex, the expressions needed to unpack them can clutter your XMLUI markup. In this case the  component offloads that work to a `transformStops` function so it can work with a simplified structure.
-
-- **Enrich data**. The transformed data has `yes`/`no` values for `wifi` and `toilets`. `TubeStops` uses [Fragment](https://xmlui-docs.azurewebsites.net/components/Fragment) to display an [Icon](https://xmlui-docs.azurewebsites.net/components/Icon) only for `yes` values.
+    <Markdown width="50%"><![CDATA[
+<details>
+<summary>function transformStops(stops) {</summary>
+<pre>
+    return stops.map(stop => {
+      // Helper to extract a value from additionalProperties by key
+      const getProp = (key) => {
+        const prop = stop.additionalProperties &&
+          stop.additionalProperties.find(p => p.key === key);
+        return prop ? prop.value : '';
+      };
+      return {
+        name: stop.commonName,
+        zone: getProp('Zone'),
+        wifi: getProp('WiFi'),
+        toilets: getProp('Toilets'),
+        lines: stop.lines ? stop.lines.map(line => line.name).join(', ') : ''
+      };
+    });
+}
+</pre>
+</details>
 ]]></Markdown>
+
+</HStack>
+
+
+<Markdown><![CDATA[
+The `TubeStops` component:
+
+- **Defines a dynamic data source**. When this page embeds `<TubeStops line="Bakerloo"/>`, the `TubeStops` component receives a `line` property used to form the URL that fetches data.
+
+- **Transforms data**. When API responses are complex, the expressions needed to unpack them can clutter your XMLUI markup. In this case the  component offloads that work to the `transformStops` function so it can work with a simplified structure.
+
+- **Enriches data**. The transformed data has `yes`/`no` values for `wifi` and `toilets`. `TubeStops` uses [Fragment](https://xmlui-docs.azurewebsites.net/components/Fragment) to display an [Icon](https://xmlui-docs.azurewebsites.net/components/Icon) only for `yes` values.
 
 When you use custom components to access, transform, and present data, your XMLUI markup stays clean, readable, and easy to read and maintain.
 
+Another way to keep your markup clean: rely on XMLUI's layout and style engine to make your app look good and behave gracefully by default. You can adjust the (many!) settings that define an XMLUI [Theme](https://xmlui-docs.azurewebsites.net/components/Theme), but you'll rarely need to.
+
+]]></Markdown>
 
 <Link icon="arrowright" label="Themes" to="/themes" />
-
 
 </Component>

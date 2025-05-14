@@ -21,17 +21,7 @@
         <Icon name="checkmark"/>
       </Fragment>
     </Column>
-
-    <Column bindTo="lifts" />
-    <Column bindTo="escalators" />
-    <Column bindTo="cash_machines" />
   </Table>
-
-  <ModalDialog
-    id="codeBehind"
-  >
-  <Text>script code: {JSON.stringify(Object.entries(transformStops))} </Text>
-  </ModalDialog>
 
 
 </Component>

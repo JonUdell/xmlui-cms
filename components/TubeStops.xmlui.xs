@@ -11,9 +11,6 @@ function transformStops(stops) {
       zone: getProp('Zone'),
       wifi: getProp('WiFi'),
       toilets: getProp('Toilets'),
-      lifts: getProp('Lifts'),
-      escalators: getProp('Escalators'),
-      cash_machines: getProp('Cash Machines'),
       lines: stop.lines ? stop.lines.map(line => line.name).join(', ') : ''
     };
   });

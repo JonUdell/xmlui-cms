@@ -1,5 +1,7 @@
 {
    "themes": [
       "themes/earthtone.json"
-  ]
+  ],
+  "themeVars": {
+  }
  }
