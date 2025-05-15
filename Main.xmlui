@@ -24,10 +24,26 @@
             <NavLink label="Routing and Links" to="/routingAndLinks" />
             <NavLink label="Forms" to="/forms" />
             <NavLink label="Modal Dialogs" to="/modalDialogs" />
-            <NavLink label="Themes" to="/themes" />
         </NavGroup>
 
+        <NavGroup label="Component Library">
+            <NavLink label="App" to="/tbd" />
+            <NavLink label="AppHeader" to="/tbd" />
+        </NavGroup>
 
+        <NavGroup label="Code" >
+            <NavLink label="Code Behind" to="/tbd" />
+            <NavLink label="Properties" to="/tbd" />
+            <NavLink label="Expressions" to="/tbd" />
+            <NavLink label="Context Variable" to="/tbd" />
+        </NavGroup>
+
+        <NavGroup label="Themes" >
+            <NavLink label="Layout Values" to="/tbd" />
+            <NavLink label="Variables" to="/tbd" />
+        </NavGroup>
+
+        <NavLink label="Glossary" to="/tbd" />
         <NavLink label="Palettes" to="/palettes" />
         <NavLink label="Icons" to="/icons" />
 
@@ -91,6 +107,11 @@
         <Page url="/modalDialogs">
             <TBD />
         </Page>
+
+        <Page url="/tbd">
+            <TBD />
+        </Page>
+
 
         <Page url="/themes">
             <Markdown data="pages/themes.md" />

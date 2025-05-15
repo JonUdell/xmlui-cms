@@ -87,8 +87,11 @@ An instance of `TubeStops` extracts details for a given tube line. Multiple inst
 <H2>Anatomy of a custom component</H2>
 
 <Markdown><![CDATA[
-Here's the XMLUI markup for the `<TubeStops>` component.
+Here's the XMLUI markup for the `TubeStops` component.
 ]]></Markdown>
+
+<Text>Here's the XMLUI markup for the <Text variant="code">TubeStops</Text> component.</Text>
+
 
 <HStack>
 
