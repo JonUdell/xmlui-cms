@@ -1,23 +1,20 @@
-<App
-    layout="vertical-sticky"
-    logo="resources/xmlui-logo.svg"
-    logo-dark="resources/logo-dark.svg"
-    defaultTone="light"
-    defaultTheme="earthtone"
->
-
+<Fragment xmlns:XMLUIExtensions="component-ns">
+    <App layout="vertical-full-header" noScrollbarGutters="false" when="{!window.location.hash.includes('/playground')}">
+        <AppHeader>
+            <SpaceFiller/>
+            <ToneChangerButton />
+        </AppHeader>
 
     <NavPanel>
 
-        <!--
-        <NavGroup label="Learn XMLUI" initiallyExpanded="true">
+        <NavGroup label="Learn XMLUI" initiallyExpanded="{true}">
             <NavLink label="Introduction" to="/" />
-            <NavLink label="Reactive Data" to="/reactive" />
-            <NavLink label="Components" to="/components" />
-            <NavLink label="Themes" to="/themes-overview" />
+            <NavLink label="Reactive Data" to="/reactive-intro" />
+            <NavLink label="Components" to="/components-intro" />
+            <NavLink label="Themes" to="/themes-intro" />
         </NavGroup>
 
-        <NavGroup label="Create XMLUI Apps" initiallyExpanded="true">
+        <NavGroup label="Create XMLUI Apps" initiallyExpanded="{true}">
             <NavLink label="Markup" to="/markup" />
             <NavLink label="Code" to="/code" />
             <NavLink label="The App Component" to="/appComponent" />
@@ -27,50 +24,57 @@
             <NavLink label="Modal Dialogs" to="/modalDialogs" />
         </NavGroup>
 
-        <NavGroup label="Component Library">
-            <NavLink label="App" to="/tbd" />
-            <NavLink label="AppHeader" to="/tbd" />
-        </NavGroup>
-
-        <NavGroup label="Code">
-            <NavLink label="Code Behind" to="/tbd" />
-            <NavLink label="Properties" to="/tbd" />
-            <NavLink label="Expressions" to="/tbd" />
-            <NavLink label="Context Variable" to="/tbd" />
-        </NavGroup>
-
-        <NavGroup label="Themes">
+        <NavGroup label="Themes" >
             <NavLink label="Layout Values" to="/tbd" />
             <NavLink label="Variables" to="/tbd" />
         </NavGroup>
 
--->
-        <NavLink label="Markdown Testbed" to="/markdown-testbed" />
-        <NavLink label="Markdown/XMLUI Testbed" to="/combined" />
-        <NavLink label="Glossary" to="/tbd" />
+        <NavGroup label="Component Library" >
+            <NavLink label="App" to="/components/App" />
+        </NavGroup>
+
+
+        <NavLink label="Helper Tags" to="/tbd" />
+        <NavLink label="Context Variables" to="/tbd" />
+        <NavLink label="Globals" to="/globals" />
         <NavLink label="Palettes" to="/palettes" />
         <NavLink label="Icons" to="/icons" />
+        <NavLink label="Glossary" to="/tbd" />
+        <NavLink label="Test" to="/test" />
 
-    </NavPanel>
+        </NavPanel>
 
 
     <Pages>
 
         <Page url="/">
-            <Intro />
+            <Markdown data="pages/intro.md" />
         </Page>
 
-        <Page url="/reactive">
-            <Reactive />
+        <Page url="/reactive-intro">
+            <ReactiveIntro />
         </Page>
 
-        <Page url="/components">
-            <Components />
+        <Page url="/components-intro">
+            <ComponentsIntro />
         </Page>
 
-        <Page url="/themes-overview">
-            <Themes />
+        <Page url="/themes-intro">
+            <ThemesIntro />
         </Page>
+
+        <Page url="/layout-intro">
+            <LayoutIntro />
+        </Page>
+
+        <Page url="/markup">
+            <Markup />
+        </Page>
+
+        <Page url="/code">
+            <Code />
+        </Page>
+
 
         <Page url="/icons">
             <Icons />
@@ -80,17 +84,18 @@
             <Palettes />
         </Page>
 
+        <Page url="/globals">
+          <Markdown data="pages/globals.md" />
+        </Page>
+
+        <Page url="/components/App">
+          <Markdown data="pages/App.md" />
+        </Page>
+
         <Page url="/xmlui-theme">
             <Markdown data="pages/xmlui-theme.md" />
         </Page>
 
-        <Page url="/markup">
-            <TBD />
-        </Page>
-
-        <Page url="/code">
-            <TBD />
-        </Page>
 
         <Page url="/appComponent">
             <TBD />
@@ -116,25 +121,21 @@
             <TBD />
         </Page>
 
-
         <Page url="/themes">
             <Markdown data="pages/themes.md" />
         </Page>
 
-        <Page url="/markdown-testbed">
-            <Markdown data="pages/markdown-testbed.md" />
+        <Page url="/test">
+           <Test />
         </Page>
-
-        <Page url="/combined">
-            <Combined />
-        </Page>
-
 
     </Pages>
 
+        <Footer>
+            <Text>Created with <Text variant="strong"> XMLUI</Text></Text>
+        </Footer>
 
-    <Footer> Built with XMLUI <ToneChangerButton />
-    </Footer>
 
-
-</App>
+    </App>
+    <XMLUIExtensions:StandalonePlayground  when="{window.location.hash.includes('/playground')}"/>
+</Fragment>

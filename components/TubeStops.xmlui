@@ -3,7 +3,7 @@
   <DataSource
     id="stops"
     url="https://api.tfl.gov.uk/Line/{$props.line}/StopPoints"
-    transformResult="{transformStops}"
+    transformResult="{window.transformStops}"
   />
 
   <Text variant="strong">{$props.line}</Text>
@@ -22,6 +22,5 @@
       </Fragment>
     </Column>
   </Table>
-
 
 </Component>
