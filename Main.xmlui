@@ -9,6 +9,7 @@
 
     <NavPanel>
 
+        <!--
         <NavGroup label="Learn XMLUI" initiallyExpanded="true">
             <NavLink label="Introduction" to="/" />
             <NavLink label="Reactive Data" to="/reactive" />
@@ -31,18 +32,21 @@
             <NavLink label="AppHeader" to="/tbd" />
         </NavGroup>
 
-        <NavGroup label="Code" >
+        <NavGroup label="Code">
             <NavLink label="Code Behind" to="/tbd" />
             <NavLink label="Properties" to="/tbd" />
             <NavLink label="Expressions" to="/tbd" />
             <NavLink label="Context Variable" to="/tbd" />
         </NavGroup>
 
-        <NavGroup label="Themes" >
+        <NavGroup label="Themes">
             <NavLink label="Layout Values" to="/tbd" />
             <NavLink label="Variables" to="/tbd" />
         </NavGroup>
 
+-->
+        <NavLink label="Markdown Testbed" to="/markdown-testbed" />
+        <NavLink label="Markdown/XMLUI Testbed" to="/combined" />
         <NavLink label="Glossary" to="/tbd" />
         <NavLink label="Palettes" to="/palettes" />
         <NavLink label="Icons" to="/icons" />
@@ -117,12 +121,19 @@
             <Markdown data="pages/themes.md" />
         </Page>
 
+        <Page url="/markdown-testbed">
+            <Markdown data="pages/markdown-testbed.md" />
+        </Page>
+
+        <Page url="/combined">
+            <Combined />
+        </Page>
+
 
     </Pages>
 
 
-    <Footer>
-      Built with XMLUI <ToneChangerButton />
+    <Footer> Built with XMLUI <ToneChangerButton />
     </Footer>
 
 

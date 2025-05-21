@@ -16,9 +16,19 @@ XMLUI is a framework for building user interfaces declaratively, with XML markup
 This paragraph is static text displayed by XMLUI's [Markdown](https://xmlui-docs.azurewebsites.net/components/Markdown/) component.
 
 This list is a live report on the status of London's tube stations. When you reload the page you'll see fresh data.
+
+```xmlui-pg name="Line Status" height="400px"
+<App>
+  <List data="https://api.tfl.gov.uk/line/mode/tube/status">
+     <Text>{$item.name}: {$item.lineStatuses[0].statusSeverityDescription}</Text>
+  </List>
+</App>
+```
+
 ]]></Markdown>
 
-    <List inspect="true" data="https://api.tfl.gov.uk/line/mode/tube/status">
+
+    <List data="https://api.tfl.gov.uk/line/mode/tube/status">
         <Text>{$item.name}: {$item.lineStatuses[0].statusSeverityDescription}</Text>
     </List>
 
